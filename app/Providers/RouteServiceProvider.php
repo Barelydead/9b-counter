@@ -24,8 +24,10 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-
         parent::boot();
+
+        Route::model('climber', App\Climber::class);
+        Route::model('route', App\Route::class);
     }
 
     /**

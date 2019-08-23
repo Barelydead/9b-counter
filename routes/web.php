@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ClimberController@index');
+Route::get('/climbers', 'ClimberController@index');
+Route::get('/climbers/{climber}', 'ClimberController@show');
+
+Route::get('/routes', 'RouteController@index');
