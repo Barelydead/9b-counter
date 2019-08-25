@@ -16,7 +16,7 @@ class RouteController extends Controller
     {
         $routes = $route->all();
 
-        return view('routes', ['routes' => $routes]);
+        return view('routes.index', ['routes' => $routes]);
     }
 
     /**

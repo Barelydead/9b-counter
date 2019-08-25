@@ -3,4 +3,14 @@
 
 // Base
 @import 'base/fonts';
-@import 'base/typography'
+@import 'base/typography';
+
+// Components
+@import 'components/climber-card';
+@import 'components/header';
+@import 'components/intro';
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+}

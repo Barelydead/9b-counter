@@ -14,9 +14,12 @@
   @include('partials.header')
 
   <body>
-    @yield('main')
+    <main class="main">
+      @yield('main')
+    </main>
   </body>
 
   @include('partials.footer')
 
+  <script src="{{asset('js/app.js')}}"></script>
 </html>

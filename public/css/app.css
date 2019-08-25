@@ -1,4 +1,141 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap);body {
+@import url(https://fonts.googleapis.com/css?family=Nunito);@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap);html,
+body {
+  margin: 0;
+  padding: 0;
   font-family: "Raleway", sans-serif;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #727272;
+}
+
+a {
+  font-weight: 800;
+  text-decoration: none;
+  color: #727272;
+}
+
+a:hover {
+  border-bottom: 1px solid #727272;
+}
+
+.climber-card {
+  background: #eee;
+  transition: all 0.1s ease-in;
+}
+
+.climber-card:hover {
+  transform: translate3d(1rem, 0, 0);
+}
+
+.climber-card + .climber-card {
+  margin-top: 1rem;
+}
+
+.climber-card__inner {
+  display: flex;
+  padding: 1rem;
+}
+
+.climber-card__section {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.climber-card__section + .climber-card__section {
+  padding-left: 2rem;
+}
+
+.climber-card__section--small {
+  width: 12.5%;
+}
+
+.climber-card__section--medium {
+  width: 25%;
+}
+
+.climber-card__section--large {
+  width: 50%;
+}
+
+.climber-card__score {
+  display: inline-block;
+  font-size: 4rem;
+  float: left;
+  font-weight: 800;
+}
+
+.climber-card__score + .climber-card__score {
+  padding-left: 3rem;
+}
+
+.climber-card__score--9b {
+  color: #3490dc;
+}
+
+.climber-card__score--8c {
+  color: #f6993f;
+}
+
+.climber-card__name {
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  font-size: 4rem;
+}
+
+.header {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #727272;
+}
+
+.header__logo {
+  font-weight: 600;
+  color: #727272;
+}
+
+.nav {
+  display: flex;
+}
+
+.nav__item {
+  display: inline-block;
+  padding: 0 1rem;
+}
+
+.intro {
+  padding: 2rem 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.intro__title {
+  font-size: 3rem;
+}
+
+.intro__preamble {
+  font-weight: 400;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 

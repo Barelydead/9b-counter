@@ -1,0 +1,13 @@
+.intro {
+  padding: 2rem 0;
+  max-width: 600px;
+  margin: 0 auto;
+
+  &__title {
+    font-size: 3rem;
+  }
+
+  &__preamble {
+    font-weight: 400;
+  }
+}

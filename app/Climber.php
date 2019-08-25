@@ -17,4 +17,12 @@ class Climber extends Model
     public function routes() {
       return $this->belongsToMany(Route::class);
     }
+
+    /**
+     * undocumented class
+     */
+    public function path() {
+      return "climbers/$this->id";
+    }
+
 }

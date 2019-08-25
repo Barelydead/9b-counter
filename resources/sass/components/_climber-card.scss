@@ -1,0 +1,66 @@
+.climber-card {
+  background: #eee;
+  transition: all 0.1s ease-in;
+
+  &:hover {
+    transform: translate3d(1rem, 0, 0);
+  }
+
+  & + & {
+    margin-top: 1rem;
+  }
+
+  &__inner {
+    display: flex;
+    padding: 1rem;
+  }
+
+  &__section {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+
+    & + & {
+      padding-left: 2rem;
+    }
+
+    &--small {
+      width: 12.5%
+    }
+
+    &--medium {
+      width: 25%;
+    }
+
+    &--large {
+      width: 50%;
+    }
+  }
+
+  &__score {
+    display: inline-block;
+    font-size: 4rem;
+    float: left;
+    font-weight: 800;
+
+    & + & {
+      padding-left: 3rem;
+    }
+
+    &--9b {
+      color: $primary;
+    }
+
+    &--8c {
+      color: $secondary;
+    }
+  }
+
+  &__name {
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    font-size: 4rem;
+  }
+}
+

@@ -1,0 +1,20 @@
+.header {
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $grey;
+
+  &__logo {
+    font-weight: 600;
+    color: $grey;
+  }
+}
+
+.nav {
+  display: flex;
+
+  &__item {
+    display: inline-block;
+    padding: 0 1rem;
+  }
+}
