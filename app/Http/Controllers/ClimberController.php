@@ -12,9 +12,27 @@ class ClimberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Climber $climber)
+    public function index(Request $request, Climber $climber)
     {
-      return view('climbers.index', ['climbers' => $climber->all()]);
+      $climbers = Climber::with('routes')->get();
+
+      if ($request->query('sort') == 'sport') {
+        $climbers = $climbers->sortBy(function($climber) {
+          return $climber->routes->filter(function ($route) {
+            return $route->type == 'sport';
+          });
+        });
+      } else if ($request->query('sort') == 'boulder') {
+        $climbers = $climbers->sortBy(function($climber) {
+          return $climber->routes->filter(function ($route) {
+            return $route->type == 'boulder';
+          });
+        });
+      } else {
+        $climbers = $climbers->sortBy('name');
+      }
+
+      return view('climbers.index', ['climbers' => $climbers]);
     }
 
     /**

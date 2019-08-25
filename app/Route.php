@@ -9,6 +9,9 @@ class Route extends Model
     /** @var $guarded description */
     protected $guarded = [];
 
+    /**
+     * Routes relationship.
+     */
     public function climbers() {
       return $this->belongsToMany(Climber::class);
     }
