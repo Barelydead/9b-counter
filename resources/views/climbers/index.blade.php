@@ -78,10 +78,10 @@
           <h4 class="climber-card__name">{{ $climber->name }}</h4>
         </div>
         <div class="col-1 d-flex align-items-center">
-          <span class="climber-card__score climber-card__score--9b">2</span>
+          <span class="climber-card__score climber-card__score--9b">{{ $climber->nines() }}</span>
         </div>
         <div class="col-1 d-flex align-items-center">
-          <span class="climber-card__score climber-card__score--8c">2</span>
+          <span class="climber-card__score climber-card__score--8c">{{ $climber->eights() }}</span>
         </div>
       </div>
     </a>

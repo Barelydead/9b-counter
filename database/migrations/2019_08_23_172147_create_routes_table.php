@@ -18,6 +18,7 @@ class CreateRoutesTable extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('difficulty');
+            $table->enum('type', ['sport', 'boulder']);
             $table->text('location')->nullable();
             $table->string('crag')->nullable();
         });
