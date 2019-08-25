@@ -17,7 +17,7 @@ a {
   color: #000;
 
   &:hover {
-    border-bottom: 1px solid $grey;
+    border-bottom: 1px solid #000;
     color: #000;
     text-decoration: none;
   }
@@ -29,4 +29,8 @@ a {
   &:visited {
 
   }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
 }
