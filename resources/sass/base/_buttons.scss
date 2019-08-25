@@ -1,0 +1,14 @@
+.button {
+  padding: 1rem 2rem;
+  color:$white;
+  background: $primary;
+  border: none;
+  border-radius: 5px;
+  transition: .1s ease-in;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+
+  &:hover {
+    background: darken($primary, 5%);
+  }
+}

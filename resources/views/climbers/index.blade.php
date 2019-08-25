@@ -4,28 +4,95 @@
 @section('title', 'Climbers')
 
 @section('main')
-  <div class="intro">
-    <h1 class="intro__title">Climbers</h1>
-    <p class="intro__preamble">Browse all the climbers that are lucky and strong enough to be placed on the 9b counter.</p>
+  <div class="container">
+    <div class="row">
+      <div class="intro">
+        <h1 class="intro__title">Climbers</h1>
+        <p class="intro__preamble">Browse all the climbers that are lucky and strong enough to be placed on the 9b counter.</p>
+      </div>
+    </div>
   </div>
 
-  @foreach ($climbers as $climber)
-  <div class="climber-card">
-    <a href="{{ $climber->path() }}" class="climber-card__link">
-      <div class="climber-card__inner">
-        <div class="climber-card__section climber-card__section--small">
-            <svg class="climber-card__flag-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 88.2770004272461 512 335.4495544433594" style="enable-background:new 0 0 512.001 512.001;" xml:space="default">      <path style="fill:#4173CD;" d="M503.172,423.725H8.828c-4.875,0-8.828-3.953-8.828-8.828V97.104c0-4.875,3.953-8.828,8.828-8.828  h494.345c4.875,0,8.828,3.953,8.828,8.828v317.793C512,419.773,508.047,423.725,503.172,423.725z"></path>      <polygon style="fill:#FFE15A;" points="512,229.518 211.862,229.518 211.862,88.277 158.897,88.277 158.897,229.518 0,229.518   0,282.484 158.897,282.484 158.897,423.725 211.862,423.725 211.862,282.484 512,282.484 "></polygon>      <g>      </g>      <g>      </g>      <g>      </g>      <g>      </g>      <g>      </g>      <g>      </g>      <g>      </g>      <g>      </g>      <g>      </g>      <g>      </g>      <g>      </g>      <g>      </g>      <g>      </g>      <g>      </g>      <g>      </g>      </svg>
+  <div class="container">
+    <div class="climber-card__list-header">
+      <div class="row">
+        <div class="col-1">
+          <span>Climber</span>
         </div>
-        <div class="climber-card__section">
+        <div class="col">
+
+        </div>
+        <div class="col-1">
+          <span>9b</span>
+        </div>
+        <div class="col-1">
+          <span>8c</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+  @foreach ($climbers as $climber)
+    <a href="{{ $climber->path() }}" class="climber-card p-3">
+      <div class="row">
+        <div class="col-1 d-flex align-items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001;" xml:space="preserve">
+              <path style="fill:#4173CD;" d="M512,200.093H0V97.104c0-4.875,3.953-8.828,8.828-8.828h494.345c4.875,0,8.828,3.953,8.828,8.828  L512,200.093L512,200.093z"/>
+              <path style="fill:#F5F5F5;" d="M503.172,423.725H8.828c-4.875,0-8.828-3.953-8.828-8.828V311.909h512v102.988  C512,419.773,508.047,423.725,503.172,423.725z"/>
+              <rect y="200.091" style="fill:#464655;" width="512" height="111.81"/>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              <g>
+              </g>
+              </svg>
+
+        </div>
+        <div class="col d-flex align-items-center">
           <h4 class="climber-card__name">{{ $climber->name }}</h4>
         </div>
-        <div class="climber-card__section climber-card__section--medium">
+        <div class="col-1 d-flex align-items-center">
           <span class="climber-card__score climber-card__score--9b">2</span>
+        </div>
+        <div class="col-1 d-flex align-items-center">
           <span class="climber-card__score climber-card__score--8c">2</span>
         </div>
       </div>
     </a>
+  @endforeach
   </div>
 
-  @endforeach
+  <div class="show-more">
+    <button class="button">Load more</button>
+  </div>
+
+
 @endsection
+
+

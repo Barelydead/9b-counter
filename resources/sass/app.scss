@@ -1,16 +1,18 @@
+// Bootstrap grid
+@import '~bootstrap/scss/bootstrap-grid';
+@import '~bootstrap/scss/bootstrap-reboot';
+@import '~bootstrap/scss/type';
+@import '~bootstrap/scss/utilities';
+
 // Variables
 @import 'variables';
 
 // Base
-@import 'base/fonts';
-@import 'base/typography';
+@import 'base/base';
+@import 'base/buttons';
 
 // Components
 @import 'components/climber-card';
 @import 'components/header';
 @import 'components/intro';
-
-.main {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+@import 'components/show-more';
