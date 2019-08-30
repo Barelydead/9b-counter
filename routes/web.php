@@ -14,7 +14,9 @@
 // Climber routes
 Route::get('/', 'ClimberController@index')->name('front');
 Route::get('/climbers', 'ClimberController@index');
+Route::get('/climbers/create', 'ClimberController@create')->middleware('auth');
 Route::get('/climbers/{climber}', 'ClimberController@show');
+Route::post('/climbers', 'ClimberController@store');
 
 // Route routes ;)
 Route::get('/routes', 'RouteController@index');

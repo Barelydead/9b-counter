@@ -38,7 +38,7 @@ class ClimberController extends Controller
      */
     public function create()
     {
-        //
+      return view('climbers.create');
     }
 
     /**
@@ -49,7 +49,10 @@ class ClimberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Climber::create($request->all());
+
+        $request->session()->flash('success', 'Task was successful!');
+        return redirect('/climbers');
     }
 
     /**
