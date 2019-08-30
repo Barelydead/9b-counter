@@ -4,7 +4,7 @@
 @section('title', 'Climbers')
 
 @section('main')
-  @include('partials/intro', ['title' => 'Climbers', 'preamble' => 'Browse all the climbers that are lucky and strong enough to be placed on the 9b counter.'])
+  @include('components/intro', ['title' => 'Climbers', 'preamble' => 'Browse all the climbers that are lucky and strong enough to be placed on the 9b counter.'])
 
   <div class="container">
     <div class="climber-card__list-header">

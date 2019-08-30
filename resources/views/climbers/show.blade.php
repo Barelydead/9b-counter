@@ -4,8 +4,7 @@
 @section('title', 'Climbers')
 
 @section('main')
-
-  @include('partials/intro', ['title' => $climber->name, 'preamble' => 'bio'])
+  @include('components/intro', ['title' => $climber->name, 'preamble' => 'bio'])
 
   <div class="container">
     <div class="row">
