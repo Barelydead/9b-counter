@@ -12,21 +12,17 @@ class ClimberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request, Climber $climber)
+    public function index(Request $request)
     {
       $climbers = Climber::with('routes')->get();
 
       if ($request->query('sort') == 'sport') {
-        $climbers = $climbers->sortBy(function($climber) {
-          return $climber->routes->filter(function ($route) {
-            return $route->type == 'sport';
-          });
+        $climbers = $climbers->sortByDesc(function($climber) {
+          return $climber->nines();
         });
       } else if ($request->query('sort') == 'boulder') {
-        $climbers = $climbers->sortBy(function($climber) {
-          return $climber->routes->filter(function ($route) {
-            return $route->type == 'boulder';
-          });
+        $climbers = $climbers->sortByDesc(function($climber) {
+          return $climber->eights();
         });
       } else {
         $climbers = $climbers->sortBy('name');
@@ -62,9 +58,9 @@ class ClimberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Climber $climber)
     {
-        //
+      return view('climbers.show', ['climber' => $climber]);
     }
 
     /**
