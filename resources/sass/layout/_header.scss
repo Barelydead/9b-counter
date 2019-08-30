@@ -6,6 +6,7 @@
   border-bottom: solid 1px #ddd;
   box-shadow: #ddd 0 0 20px 0;
   z-index: 2;
+  border-top: 6px solid $primary;
 
   &__logo {
     font-weight: 600;

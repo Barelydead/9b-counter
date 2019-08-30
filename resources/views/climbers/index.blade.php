@@ -46,11 +46,6 @@
   @endforeach
   </div>
 
-  <div class="show-more">
-    <button class="button">Load more</button>
-  </div>
-
-
 @endsection
 
 
