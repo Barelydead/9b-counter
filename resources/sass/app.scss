@@ -5,6 +5,7 @@
 @import '~bootstrap/scss/bootstrap-reboot';
 @import '~bootstrap/scss/type';
 @import '~bootstrap/scss/utilities';
+@import '~bootstrap/scss/forms';
 
 // Variables
 @import 'variables';
@@ -15,6 +16,10 @@
 
 // Components
 @import 'components/climber-card';
-@import 'components/header';
 @import 'components/intro';
 @import 'components/show-more';
+
+// Layout
+@import 'layout/header';
+@import 'layout/footer';
+@import 'layout/main';

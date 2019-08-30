@@ -1,5 +1,5 @@
 .button {
-  padding: 1rem 2rem;
+  padding: .5rem 2rem;
   color:$white;
   background: $primary;
   border: none;
@@ -10,5 +10,21 @@
 
   &:hover {
     background: darken($primary, 5%);
+    color: $white;
+    border: none;
+  }
+
+  &--danger {
+    background: $secondary;
+
+    &:hover {
+      background: darken($secondary, 5%);
+    }
+  }
+
+  &--small {
+    padding: .5rem;
+    font-size: .9rem;
+    line-height: 1;
   }
 }

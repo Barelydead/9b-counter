@@ -19,6 +19,14 @@
               <a class="nav__links" href="/routes">Routes</a>
             </li>
           </ul>
+          @if (Auth::check())
+          <form method="post" action="{{ route('logout') }}" class="ml-2">
+            @csrf
+            <input type="submit" class="button button--danger button--small" value="logout">
+          </form>
+          @else
+            <a href="/login" class="button button--small ml-2">login</a>
+          @endif
         </div>
       </div>
     </div>
