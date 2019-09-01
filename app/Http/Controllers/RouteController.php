@@ -12,9 +12,9 @@ class RouteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Route $route)
+    public function index()
     {
-        $routes = $route->all();
+        $routes = Route::all();
 
         return view('routes.index', ['routes' => $routes]);
     }
@@ -26,7 +26,7 @@ class RouteController extends Controller
      */
     public function create()
     {
-        //
+      return view('routes.create');
     }
 
     /**
@@ -37,7 +37,9 @@ class RouteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      Route::create($request->all());
+
+      return redirect('/routes');
     }
 
     /**

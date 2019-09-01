@@ -20,6 +20,8 @@ Route::post('/climbers', 'ClimberController@store');
 
 // Route routes ;)
 Route::get('/routes', 'RouteController@index');
+Route::get('/routes/create', 'RouteController@create');
+Route::post('/routes', 'RouteController@store');
 
 // Auth routes
 Route::get('/login', '\App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
