@@ -9,7 +9,7 @@ $factory->define(Route::class, function (Faker $faker) {
   return [
     'name' => $faker->name,
     'difficulty' => '9b',
-    'location' => $faker->city,
+    'country' => $faker->country,
     'type' => $faker->randomElement(['boulder' ,'sport']),
   ];
 });
