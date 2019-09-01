@@ -15,9 +15,6 @@
             <li class="nav__item">
               <a class="nav__links" href="/climbers">Climbers</a>
             </li>
-            <li class="nav__item">
-              <a class="nav__links" href="/routes">Routes</a>
-            </li>
           </ul>
           @if (Auth::check())
           <form method="post" action="{{ route('logout') }}" class="ml-2">

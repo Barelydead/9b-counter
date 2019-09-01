@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Route;
+use App\Climber;
 
 class RouteController extends Controller
 {
@@ -59,21 +60,34 @@ class RouteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($route)
     {
-        //
+        $climbers = Climber::all(['id', 'name']);
+
+        return view('routes.edit', [
+          'route' => $route,
+          'climbers' => $climbers
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Route  $route
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $route)
     {
-        //
+      if ($climber_id = $request->post('climber-ascent')) {
+        $route->climbers()->attach($climber_id);
+
+        return redirect('/climbers');
+      }
+
+      $route->update($request->all());
+
+      return redirect('/routes');
     }
 
     /**

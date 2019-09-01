@@ -17,11 +17,15 @@ Route::get('/climbers', 'ClimberController@index');
 Route::get('/climbers/create', 'ClimberController@create')->middleware('auth');
 Route::get('/climbers/{climber}', 'ClimberController@show');
 Route::post('/climbers', 'ClimberController@store');
+Route::get('/climbers/{climber}/edit', 'ClimberController@edit')->middleware('auth');
+Route::post('/climbers/{climber}', 'ClimberController@update');
 
 // Route routes ;)
 Route::get('/routes', 'RouteController@index');
 Route::get('/routes/create', 'RouteController@create');
 Route::post('/routes', 'RouteController@store');
+Route::get('/routes/{route}/edit', 'RouteController@edit')->middleware('auth');
+Route::post('/routes/{route}', 'RouteController@update');
 
 // Auth routes
 Route::get('/login', '\App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');

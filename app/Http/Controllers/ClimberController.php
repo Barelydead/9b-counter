@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Climber;
+use App\Route;
 
 class ClimberController extends Controller
 {
@@ -72,9 +73,14 @@ class ClimberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($climber)
     {
-        //
+        $routes = Route::all(['id', 'name', 'difficulty']);
+
+        return view('climbers.edit', [
+          'climber' => $climber,
+          'routes' => $routes,
+        ]);
     }
 
     /**
@@ -84,9 +90,17 @@ class ClimberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $climber)
     {
-        //
+      if ($route_id = $request->post('route-ascent')) {
+        $climber->routes()->attach($route_id);
+
+        return redirect('/climbers/' . $climber->id);
+      }
+
+       $climber->update($request->all());
+
+       return redirect('/climbers/' . $climber->id);
     }
 
     /**
