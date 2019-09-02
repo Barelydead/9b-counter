@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>9B Counter | @yield('title')</title>
-
+  <link rel="shortcut icon" href="/favicon.ico">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>

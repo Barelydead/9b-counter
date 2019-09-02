@@ -49375,6 +49375,13 @@ function trimSvgWhitespace() {
 }
 
 trimSvgWhitespace();
+var cards = document.querySelectorAll('.js-routes-toggle');
+
+for (var i = 0; i < cards.length; i++) {
+  cards[i].addEventListener('click', function () {
+    this.classList.toggle('climber-card--expanded');
+  });
+}
 
 /***/ }),
 

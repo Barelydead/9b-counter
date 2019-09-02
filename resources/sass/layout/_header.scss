@@ -8,8 +8,28 @@
   z-index: 2;
   border-top: 6px solid $primary;
 
-  &__logo {
+  &__site-name {
     font-weight: 600;
+    display: none;
+
+    @media (min-width: 400px) {
+      display: inline;
+    }
+  }
+
+  &__logo {
+    width: 35px;
+    height: 35px;
+
+    &-link {
+      display: inline-block;
+      transition: all .1s ease-in;
+
+      &:hover {
+        border: none;
+        transform: translate3d(.2rem, 0, 0);
+      }
+    }
   }
 }
 

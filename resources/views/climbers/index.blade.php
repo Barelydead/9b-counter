@@ -27,7 +27,11 @@
 
   <div class="container">
     @foreach ($climbers as $climber)
-      @include('components/climber-card', ['climber' => $climber])
+      <div class="row mb-2">
+        <div class="col">
+          @include('components/climber-card', ['climber' => $climber])
+        </div>
+      </div>
     @endforeach
   </div>
 

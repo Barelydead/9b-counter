@@ -1,9 +1,11 @@
 .climber-card {
   transition: transform 0.1s ease-in;
   display: block;
+  cursor: pointer;
+  box-shadow: #ddd 0 0 6px;
 
   &:hover {
-    transform: scale(1.02);
+    transform: translateX(5px);
     color: inherit;
     text-decoration: none;
     border: none;
@@ -39,6 +41,18 @@
   &__list-header {
     padding: 1rem;
     border-bottom: 2px solid #eee;
+  }
+
+  &__routes {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s ease-in-out;
+    background: #ddd;
+
+    .climber-card--expanded & {
+      max-height: 500px;
+      padding: 2rem;
+    }
   }
 }
 
