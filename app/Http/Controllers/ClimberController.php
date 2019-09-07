@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Climber;
 use App\Route;
+use App\Activity;
 
 class ClimberController extends Controller
 {
@@ -16,6 +17,10 @@ class ClimberController extends Controller
     public function index(Request $request)
     {
       $climbers = Climber::with('routes')->get();
+      $activity = Activity::with(['climber', 'route'])
+        ->orderBy('updated_at', 'desc')
+        ->take(10)
+        ->get();
 
       if ($request->query('sort') == 'sport') {
         $climbers = $climbers->sortByDesc(function($climber) {
@@ -29,7 +34,10 @@ class ClimberController extends Controller
         $climbers = $climbers->sortBy('name');
       }
 
-      return view('climbers.index', ['climbers' => $climbers]);
+      return view('climbers.index', [
+        'climbers' => $climbers,
+        'activity' => $activity
+      ]);
     }
 
     /**

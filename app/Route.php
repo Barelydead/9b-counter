@@ -13,6 +13,6 @@ class Route extends Model
      * Routes relationship.
      */
     public function climbers() {
-      return $this->belongsToMany(Climber::class);
+      return $this->belongsToMany(Climber::class)->withTimestamps()->withPivot('climber_id', 'updated_at');
     }
 }

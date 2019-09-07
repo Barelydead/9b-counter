@@ -10,7 +10,12 @@
     <div class="row">
       <div class="col-4 activity pt-4">
         <div class="activity__header">
-          <h2>Activity feed</h2>
+          <h2>Latest activity</h2>
+          @foreach ($activity as $activity)
+          <ul>
+            <li>{{ $activity->climber->name }} logged ascent of {{ $activity->route->name }} on {{ $activity->updated_at }}</li>
+          </ul>
+          @endforeach
         </div>
       </div>
       <div class="col pt-4">

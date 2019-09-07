@@ -16,7 +16,7 @@ class Climber extends Model
      * Routes relationship.
      */
     public function routes() {
-      return $this->belongsToMany(Route::class);
+      return $this->belongsToMany(Route::class)->withTimestamps()->withPivot('route_id', 'updated_at');
     }
 
     /**
