@@ -9065,15 +9065,6 @@ a:hover {
   text-decoration: none;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: "Fjalla One", sans-serif;
-}
-
 .button {
   padding: 0.5rem 2rem;
   color: #fff;
@@ -9105,64 +9096,6 @@ h6 {
   line-height: 1;
 }
 
-.climber-card {
-  transition: transform 0.1s ease-in;
-  display: block;
-  cursor: pointer;
-  box-shadow: #ddd 0 0 6px;
-}
-
-.climber-card:hover {
-  transform: translateX(5px);
-  color: inherit;
-  text-decoration: none;
-  border: none;
-}
-
-.climber-card + .climber-card {
-  margin-top: 1rem;
-}
-
-.climber-card__score {
-  display: inline-block;
-  font-weight: 800;
-}
-
-.climber-card__score + .climber-card__score {
-  padding-left: 3rem;
-}
-
-.climber-card__score--9b {
-  color: #3490dc;
-}
-
-.climber-card__score--8c {
-  color: #f6993f;
-}
-
-.climber-card__name {
-  padding: 0;
-  margin: 0;
-  line-height: 1;
-}
-
-.climber-card__list-header {
-  padding: 1rem;
-  border-bottom: 2px solid #eee;
-}
-
-.climber-card__routes {
-  max-height: 0;
-  overflow: hidden;
-  transition: all 0.5s ease-in-out;
-  background: #ddd;
-}
-
-.climber-card--expanded .climber-card__routes {
-  max-height: 500px;
-  padding: 2rem;
-}
-
 .intro {
   text-align: center;
   padding: 2rem 0;
@@ -9183,10 +9116,6 @@ h6 {
   padding: 2rem 0;
   display: flex;
   justify-content: center;
-}
-
-.activity {
-  box-shadow: #ddd 0 0 6px;
 }
 
 .header {

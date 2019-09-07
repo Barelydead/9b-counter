@@ -1,59 +1,59 @@
-.climber-card {
-  transition: transform 0.1s ease-in;
-  display: block;
-  cursor: pointer;
-  box-shadow: #ddd 0 0 6px;
+// .climber-card {
+//   transition: transform 0.1s ease-in;
+//   display: block;
+//   cursor: pointer;
+//   box-shadow: #ddd 0 0 6px;
 
-  &:hover {
-    transform: translateX(5px);
-    color: inherit;
-    text-decoration: none;
-    border: none;
-  }
+//   &:hover {
+//     transform: translateX(5px);
+//     color: inherit;
+//     text-decoration: none;
+//     border: none;
+//   }
 
-  & + & {
-    margin-top: 1rem;
-  }
+//   & + & {
+//     margin-top: 1rem;
+//   }
 
-  &__score {
-    display: inline-block;
-    font-weight: 800;
+//   &__score {
+//     display: inline-block;
+//     font-weight: 800;
 
-    & + & {
-      padding-left: 3rem;
-    }
+//     & + & {
+//       padding-left: 3rem;
+//     }
 
-    &--9b {
-      color: $primary;
-    }
+//     &--9b {
+//       color: $primary;
+//     }
 
-    &--8c {
-      color: $secondary;
-    }
-  }
+//     &--8c {
+//       color: $secondary;
+//     }
+//   }
 
-  &__name {
-    padding: 0;
-    margin: 0;
-    line-height: 1;
-  }
+//   &__name {
+//     padding: 0;
+//     margin: 0;
+//     line-height: 1;
+//   }
 
-  &__list-header {
-    padding: 1rem;
-    border-bottom: 2px solid #eee;
-  }
+//   &__list-header {
+//     padding: 1rem;
+//     border-bottom: 2px solid #eee;
+//   }
 
-  &__routes {
-    max-height: 0;
-    overflow: hidden;
-    transition: all 0.5s ease-in-out;
-    background: #ddd;
+//   &__routes {
+//     max-height: 0;
+//     overflow: hidden;
+//     transition: all 0.5s ease-in-out;
+//     background: #ddd;
 
-    .climber-card--expanded & {
-      max-height: 500px;
-      padding: 2rem;
-    }
-  }
-}
+//     .climber-card--expanded & {
+//       max-height: 500px;
+//       padding: 2rem;
+//     }
+//   }
+// }
 
 
