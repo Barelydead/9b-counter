@@ -12,9 +12,7 @@
         <div class="activity__header">
           <h2>Latest activity</h2>
           @foreach ($activity as $activity)
-          <ul>
-            <li>{{ $activity->climber->name }} logged ascent of {{ $activity->route->name }} on {{ $activity->updated_at }}</li>
-          </ul>
+            @include('components/activity-card', ['activity' => $activity])
           @endforeach
         </div>
       </div>

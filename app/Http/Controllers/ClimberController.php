@@ -18,7 +18,7 @@ class ClimberController extends Controller
     {
       $climbers = Climber::with('routes')->get();
       $activity = Activity::with(['climber', 'route'])
-        ->orderBy('updated_at', 'desc')
+        ->orderBy('updated_at', 'asc')
         ->take(10)
         ->get();
 
