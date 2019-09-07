@@ -7,34 +7,41 @@
   @include('components/intro', ['title' => 'Climbers', 'preamble' => 'Browse all the climbers that are lucky and strong enough to be placed on the 9b counter.'])
 
   <div class="container">
-    <div class="climber-card__list-header">
-      <div class="row">
-        <div class="col-1">
-          <span><a href="?sort=default">Climber</a></span>
+    <div class="row">
+      <div class="col-4 activity pt-4">
+        <div class="activity__header">
+          <h2>Activity feed</h2>
         </div>
-        <div class="col">
+      </div>
+      <div class="col pt-4">
+        <h2>Standings</h2>
+        <div class="climber-card__list-header">
+          <div class="row">
+            <div class="col-1">
+              <span><a href="?sort=default">Climber</a></span>
+            </div>
+            <div class="col">
 
+            </div>
+            <div class="col-1">
+              <span><a href="?sort=sport">9b</a></span>
+            </div>
+            <div class="col-1">
+              <span><a href="?sort=boulder">8c</a></span>
+            </div>
+          </div>
         </div>
-        <div class="col-1">
-          <span><a href="?sort=sport">9b</a></span>
+        @foreach ($climbers as $climber)
+        <div class="row mb-2">
+          <div class="col">
+            @include('components/climber-card', ['climber' => $climber])
+          </div>
         </div>
-        <div class="col-1">
-          <span><a href="?sort=boulder">8c</a></span>
-        </div>
+      @endforeach
       </div>
     </div>
-  </div>
 
-  <div class="container">
-    @foreach ($climbers as $climber)
-      <div class="row mb-2">
-        <div class="col">
-          @include('components/climber-card', ['climber' => $climber])
-        </div>
-      </div>
-    @endforeach
   </div>
-
 @endsection
 
 

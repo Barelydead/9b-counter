@@ -30,14 +30,18 @@ class Climber extends Model
      * Path to climber.
      */
     public function nines() {
-      return $this->routes()->where('type', 'boulder')->count();
+      return count($this->routes->filter(function ($route) {
+        return $route->type == 'sport';
+      }));
     }
 
     /**
      * Path to climber.
      */
     public function eights() {
-      return $this->routes()->where('type', 'sport')->count();
+      return count($this->routes->filter(function ($route) {
+        return $route->type == 'boulder';
+      }));
     }
 
     /**

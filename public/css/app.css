@@ -9185,6 +9185,10 @@ h6 {
   justify-content: center;
 }
 
+.activity {
+  box-shadow: #ddd 0 0 6px;
+}
+
 .header {
   position: -webkit-sticky;
   position: sticky;
