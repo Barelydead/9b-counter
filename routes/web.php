@@ -16,17 +16,17 @@ Route::get('/', 'ClimberController@index')->name('front');
 Route::get('/climbers', 'ClimberController@index');
 Route::get('/climbers/create', 'ClimberController@create')->middleware('auth');
 Route::get('/climbers/{climber}', 'ClimberController@show');
-Route::post('/climbers', 'ClimberController@store');
+Route::post('/climbers', 'ClimberController@store')->middleware('auth');
 Route::get('/climbers/{climber}/edit', 'ClimberController@edit')->middleware('auth');
-Route::post('/climbers/{climber}', 'ClimberController@update');
+Route::patch('/climbers/{climber}', 'ClimberController@update')->middleware('auth');
 
 // Route routes ;)
 Route::get('/routes', 'RouteController@index');
+Route::get('/routes/create', 'RouteController@create')->middleware('auth');
 Route::get('/routes/{route}', 'RouteController@show');
-Route::get('/routes/create', 'RouteController@create');
-Route::post('/routes', 'RouteController@store');
+Route::post('/routes', 'RouteController@store')->middleware('auth');
 Route::get('/routes/{route}/edit', 'RouteController@edit')->middleware('auth');
-Route::post('/routes/{route}', 'RouteController@update');
+Route::patch('/routes/{route}', 'RouteController@update')->middleware('auth');
 
 // Auth routes
 Route::get('/login', '\App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
