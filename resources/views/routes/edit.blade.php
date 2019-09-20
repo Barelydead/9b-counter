@@ -8,8 +8,9 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-8">
-        <form action="/routes/{{ $route->id }}" method="post" class="form">
+        <form action="/routes/{{ $route->id }}" method="POST" class="form">
           @csrf
+          <input type="hidden" name="_method" value="PATCH">
           <div class="form-group">
             <label for="name">Name </label>
             <input type="text" value="{{ $route->name }}" name="name" placeholder="name" class="form-control">
@@ -51,8 +52,9 @@
         </form>
       </div>
       <div class="col-8">
-        <form action="/routes/{{ $route->id }}" method="post" class="form">
+        <form action="/routes/{{ $route->id }}" method="POST" class="form">
           @csrf
+          <input type="hidden" name="_method" value="PATCH">
           <p>Register climber ascent</p>
           <div class="form-group">
             <label for="climber">Climbers</label>

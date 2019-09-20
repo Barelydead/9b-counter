@@ -1,16 +1,23 @@
 .climber-card {
+  transition: transform 0.1s ease-in;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateX(5px);
+  }
+
   &__flag {
     width: 50px;
   }
 
   &__expanded {
     display: none;
+
+    .climber-card--expanded & {
+      display: block;
+    }
   }
 }
-//   transition: transform 0.1s ease-in;
-//   display: block;
-//   cursor: pointer;
-//   box-shadow: #ddd 0 0 6px;
 
 //   &:hover {
 //     transform: translateX(5px);

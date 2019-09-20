@@ -1,0 +1,14 @@
+.alert {
+  display: block;
+  padding: 1rem 0;
+  text-align: center;
+  color: $white;
+
+  &--success {
+    background: $success;
+  }
+
+  &--error {
+    background: $error;
+  }
+}

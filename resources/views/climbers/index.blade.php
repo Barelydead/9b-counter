@@ -40,6 +40,7 @@
         </div>
       </div>
 
+      @include('components/intro', ['title' => 'Activity', 'preamble' => 'Here are the latest registered ascents'])
       <div class="col-12 pt-4">
         <div class="list">
           <div class="list__title">

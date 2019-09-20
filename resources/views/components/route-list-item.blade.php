@@ -1,4 +1,4 @@
-<div class="route mt-3">
+<a href="/routes/{{ $route->id }}" class="route route--list-item mt-3">
   <div class="row">
     <div class="col-4 d-flex align-items-center">
       <h4 class="route__name">{{ $route->name }}</h4>
@@ -13,4 +13,4 @@
       <span class="route__difficulty">{{ $route->difficulty }}</span>
     </div>
   </div>
-</div>
+</a>

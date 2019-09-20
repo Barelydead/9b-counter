@@ -8,8 +8,10 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-8">
-        <form action="/climbers/{{ $climber->id }}" method="post" class="form">
+        <form action="/climbers/{{ $climber->id }}" method="POST" class="form">
           @csrf
+          <input type="hidden" name="_method" value="PUT">
+          <h4>Edit climber info</h4>
           <div class="form-group">
             <label for="name">Name </label>
             <input type="text" value="{{ $climber->name }}" name="name" placeholder="name" class="form-control">
@@ -32,12 +34,12 @@
         </form>
       </div>
       <div class="col-8">
-        <form action="/climbers/{{ $climber->id }}" method="post" class="form">
+        <form action="/climbers/{{ $climber->id }}" method="POST" class="form mt-5">
           @csrf
-          <p>Add route to ascents</p>
+          <input type="hidden" name="_method" value="PUT">
+          <h4>Add route to ascents</h4>
           <div class="form-group">
-            <label for="route">Route</label>
-            <select name="route-ascent" class="form-control" id="route">
+            <select name="route-ascent-add" class="form-control" id="route">
               @foreach ($routes as $route)
                 <option class="form__option" value="{{ $route->id }}">{{ $route->name }} - {{ $route->difficulty }}</option>
               @endforeach
@@ -46,6 +48,21 @@
           <p>Route not available in list? add new route <a href="/routes/create">here</a></p>
           <div class="form-group">
             <input type="submit" class="button" value="Register">
+          </div>
+        </form>
+        <form action="/climbers/{{ $climber->id }}" method="POST" class="form mt-5">
+          @csrf
+          <input type="hidden" name="_method" value="PUT">
+          <h4>Delete route ascent</h4>
+          <div class="form-group">
+            <select name="route-ascent-del" class="form-control" id="route">
+              @foreach ($climber->routes as $route)
+                <option class="form__option" value="{{ $route->id }}">{{ $route->name }} - {{ $route->difficulty }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="submit" class="button button--danger" value="Delete">
           </div>
         </form>
       </div>
