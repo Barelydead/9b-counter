@@ -27,7 +27,7 @@ class Climber extends Model
     }
 
     /**
-     * Path to climber.
+     * Count of sport climbs.
      */
     public function nines() {
       return count($this->routes->filter(function ($route) {
@@ -36,7 +36,7 @@ class Climber extends Model
     }
 
     /**
-     * Path to climber.
+     * Count of boulder climbs.
      */
     public function eights() {
       return count($this->routes->filter(function ($route) {

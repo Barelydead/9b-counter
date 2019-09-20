@@ -10,7 +10,7 @@ class Route extends Model
     protected $guarded = [];
 
     /**
-     * Routes relationship.
+     * Climbers relationship.
      */
     public function climbers() {
       return $this->belongsToMany(Climber::class)->withTimestamps()->withPivot('climber_id', 'updated_at');
