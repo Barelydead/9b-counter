@@ -35,7 +35,7 @@
     <div class="row">
       <div class="col-12">
         <div class="climber-card__route">
-          <p>{{$route->name}} - {{$route->difficulty}}</p>
+          <a href="/routes/{{ $route->id }}">{{$route->name}} - {{$route->difficulty}}</a>
         </div>
       </div>
     </div>
