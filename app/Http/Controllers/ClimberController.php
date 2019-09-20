@@ -18,8 +18,8 @@ class ClimberController extends Controller
     {
       $climbers = Climber::with('routes')->get();
       $activity = Activity::with(['climber', 'route'])
-        ->orderBy('updated_at', 'asc')
-        ->take(10)
+        ->orderBy('updated_at', 'desc')
+        ->take(5)
         ->get();
 
       if ($request->query('sort') == 'sport') {
@@ -60,7 +60,7 @@ class ClimberController extends Controller
     {
         Climber::create($request->all());
 
-        $request->session()->flash('success', 'Task was successful!');
+        $request->session()->flash('success', 'Climber was saved');
         return redirect('/climbers');
     }
 
@@ -98,17 +98,27 @@ class ClimberController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $climber)
+    public function update(Climber $climber, Request $request)
     {
-      if ($route_id = $request->post('route-ascent')) {
+      // dd($climber);
+      if ($route_id = $request->post('route-ascent-add')) {
         $climber->routes()->attach($route_id);
 
-        return redirect('/climbers/' . $climber->id);
+        $request->session()->flash('success', 'Route ascent registered');
+        return redirect('/climbers/' . $climber->id . '/edit');
+      }
+
+      if ($route_id = $request->post('route-ascent-del')) {
+        $climber->routes()->detach($route_id);
+
+        $request->session()->flash('success', 'Route ascent removed');
+        return redirect('/climbers/' . $climber->id . '/edit');
       }
 
        $climber->update($request->all());
 
-       return redirect('/climbers/' . $climber->id);
+       $request->session()->flash('success', 'Climber updated');
+       return redirect('/climbers/' . $climber->id . '/edit');
     }
 
     /**

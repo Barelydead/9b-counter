@@ -46,7 +46,7 @@ class RouteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Route  $route
      * @return \Illuminate\Http\Response
      */
     public function show(Route $route)
@@ -57,10 +57,10 @@ class RouteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Route  $route
      * @return \Illuminate\Http\Response
      */
-    public function edit($route)
+    public function edit(Route $route)
     {
         $climbers = Climber::all(['id', 'name']);
 
@@ -77,7 +77,7 @@ class RouteController extends Controller
      * @param  \App\Route  $route
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $route)
+    public function update(Request $request, Route $route)
     {
       if ($climber_id = $request->post('climber-ascent')) {
         $route->climbers()->attach($climber_id);
@@ -93,10 +93,10 @@ class RouteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Route  $route
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Route $route)
     {
         //
     }
