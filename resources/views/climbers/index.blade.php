@@ -8,21 +8,8 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-12 col-md-6 pt-4">
-        <div class="list">
-          <div class="list__title">
-            <h2>Latest activity</h2>
-          </div>
-          <div class="list__body">
-            @foreach ($activity as $activity)
-              <div class="list__item">
-                @include('components/activity', ['activity' => $activity])
-              </div>
-            @endforeach
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6 pt-4">
+
+      <div class="col-12 pt-4">
         <div class="list">
           <div class="list__title">
             <h2>Standings</h2>
@@ -45,13 +32,29 @@
           </div>
           <div class="list__body">
             @foreach ($climbers as $climber)
-              <div class="list__item">
+            <div class="list__item">
                 @include('components/climber-card', ['climber' => $climber])
+              </div>
+              @endforeach
+            </div>
+        </div>
+      </div>
+
+      <div class="col-12 pt-4">
+        <div class="list">
+          <div class="list__title">
+            <h2>Latest activity</h2>
+          </div>
+          <div class="list__body">
+            @foreach ($activity as $activity)
+              <div class="list__item">
+                @include('components/activity', ['activity' => $activity])
               </div>
             @endforeach
           </div>
         </div>
       </div>
+
     </div>
   </div>
 @endsection

@@ -22,6 +22,7 @@ Route::post('/climbers/{climber}', 'ClimberController@update');
 
 // Route routes ;)
 Route::get('/routes', 'RouteController@index');
+Route::get('/routes/{route}', 'RouteController@show');
 Route::get('/routes/create', 'RouteController@create');
 Route::post('/routes', 'RouteController@store');
 Route::get('/routes/{route}/edit', 'RouteController@edit')->middleware('auth');

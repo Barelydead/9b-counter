@@ -16,6 +16,9 @@
               <a class="nav__links" href="/">Home</a>
             </li>
             <li class="nav__item">
+              <a class="nav__links" href="/routes">Routes</a>
+            </li>
+            <li class="nav__item">
               <a class="nav__links" href="/climbers">Climbers</a>
             </li>
           </ul>

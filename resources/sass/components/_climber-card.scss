@@ -1,4 +1,12 @@
-// .climber-card {
+.climber-card {
+  &__flag {
+    width: 50px;
+  }
+
+  &__expanded {
+    display: none;
+  }
+}
 //   transition: transform 0.1s ease-in;
 //   display: block;
 //   cursor: pointer;

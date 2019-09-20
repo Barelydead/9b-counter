@@ -1,22 +1,42 @@
 
 @extends('layout')
 
-@section('title', 'Climbers')
+@section('title', 'Routes')
 
 @section('main')
+@include('components/intro', ['title' => 'Featured Routes', 'preamble' => 'All routes that have seen ascents'])
 
-    <h1>Routes</h1>
-    <p>This is the climbing daliy toplist</p>
-    @foreach ($routes as $route)
-      <h2>{{ $route->name }}</h2>
-      <p>age: {{ $route->difficulty }}</p>
-      <p>country: {{ $route->location }}</p>
-      <h4>climbers</h4>
-      <ul>
-      @foreach ( $route->climbers as $climber)
-          <li>{{ $climber->name }}</li>
-      @endforeach
-      </ul>
-    @endforeach
+<div class="container">
+  <div class="row">
+    <div class="col-12 pt-4">
+      <div class="list">
+        <div class="list__header">
+          <div class="row">
+            <div class="col-4">
+              <span>Route name</span>
+            </div>
+            <div class="col-3">
+              <span>Country</span>
+            </div>
+            <div class="col-3">
+              <span>Crag</span>
+            </div>
+            <div class="col-2 d-flex justify-content-end">
+              <span>Diffculty</span>
+            </div>
+          </div>
+        </div>
+        <div class="list__body">
+          @foreach ($routes as $route)
+          <div class="list__item">
+            @include('components/route-list-item', ['route' => $route])
+          </div>
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 @endsection
