@@ -23,6 +23,9 @@
             </li>
           </ul>
           @if (Auth::check())
+          <button class="button button--primary button--small ml-2">
+            <a href="/admin">admin</a>
+          </button>
           <form method="post" action="{{ route('logout') }}" class="ml-2">
             @csrf
             <input type="submit" class="button button--danger button--small" value="logout">

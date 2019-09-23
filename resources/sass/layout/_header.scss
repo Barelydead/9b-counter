@@ -37,6 +37,12 @@
   display: flex;
   justify-content: end;
 
+  &__links {
+    &--auth {
+      color: $primary;
+    }
+  }
+
   &__item {
     display: inline-block;
     padding: 0 1rem;

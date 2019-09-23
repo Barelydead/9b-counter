@@ -15,7 +15,6 @@ li {
 }
 
 a {
-  text-decoration: none;
   color: #000;
 
   &:hover {
@@ -35,4 +34,13 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   // font-family: $font-heading;
+}
+
+table {
+  width: 100%;
+  padding: 1rem;
+
+  tr, td, th {
+    padding: .5rem;
+  }
 }

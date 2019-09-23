@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-8">
-        <form action="/climbers" method="post" class="form">
+        <form action="/climbers" method="POST" class="form">
           @csrf
           <div class="form-group">
             <label for="name">Name </label>

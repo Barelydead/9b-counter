@@ -10,7 +10,7 @@
       <div class="col-8">
         <form action="/routes/{{ $route->id }}" method="POST" class="form">
           @csrf
-          <input type="hidden" name="_method" value="PATCH">
+          <input type="hidden" name="_method" value="PUT">
           <div class="form-group">
             <label for="name">Name </label>
             <input type="text" value="{{ $route->name }}" name="name" placeholder="name" class="form-control">
@@ -54,11 +54,11 @@
       <div class="col-8">
         <form action="/routes/{{ $route->id }}" method="POST" class="form">
           @csrf
-          <input type="hidden" name="_method" value="PATCH">
-          <p>Register climber ascent</p>
+          <input type="hidden" name="_method" value="PUT">
+          <p>Register route ascent</p>
           <div class="form-group">
             <label for="climber">Climbers</label>
-            <select name="climber-ascent" class="form-control" id="climber">
+            <select name="climber-ascent-add" class="form-control" id="climber">
               @foreach ($climbers as $climber)
                 <option class="form__option" value="{{ $climber->id }}">{{ $climber->name }}</option>
               @endforeach
@@ -66,6 +66,22 @@
           </div>
           <div class="form-group">
             <input type="submit" class="button" value="Register">
+          </div>
+        </form>
+        <form action="/routes/{{ $route->id }}" method="POST" class="form">
+          @csrf
+          <input type="hidden" name="_method" value="PUT">
+          <p>Remove route ascent</p>
+          <div class="form-group">
+            <label for="climber">Climbers</label>
+            <select name="climber-ascent-del" class="form-control" id="climber">
+              @foreach ($route->climbers as $climber)
+                <option class="form__option" value="{{ $climber->id }}">{{ $climber->name }}</option>
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <input type="submit" class="button button--danger" value="Remove">
           </div>
         </form>
       </div>

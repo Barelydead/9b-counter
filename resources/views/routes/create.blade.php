@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-8">
-        <form action="/routes" method="post" class="form">
+        <form action="/routes" method="POST" class="form">
           @csrf
           <div class="form-group">
             <label for="name">Name </label>
@@ -46,7 +46,7 @@
             </div>
           </fieldset>
           <div class="form-group">
-            <input type="submit" class="button" value="Add climber">
+            <input type="submit" class="button" value="Add route">
           </div>
         </form>
       </div>

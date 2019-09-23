@@ -32,11 +32,11 @@
           </div>
           <div class="list__body">
             @foreach ($climbers as $climber)
-            <div class="list__item">
+              <div class="list__item">
                 @include('components/climber-card', ['climber' => $climber])
               </div>
-              @endforeach
-            </div>
+            @endforeach
+          </div>
         </div>
       </div>
 
