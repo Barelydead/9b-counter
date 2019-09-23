@@ -10,23 +10,33 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Web routes
+Route::get('/', 'ClimberController@index')->name('front');
+
 
 // Climber routes
-Route::get('/', 'ClimberController@index')->name('front');
-Route::get('/climbers', 'ClimberController@index');
-Route::get('/climbers/create', 'ClimberController@create')->middleware('auth');
-Route::get('/climbers/{climber}', 'ClimberController@show');
-Route::post('/climbers', 'ClimberController@store')->middleware('auth');
-Route::get('/climbers/{climber}/edit', 'ClimberController@edit')->middleware('auth');
-Route::patch('/climbers/{climber}', 'ClimberController@update')->middleware('auth');
+/*
+|        | GET|HEAD  | climbers                      | climbers.index        | App\Http\Controllers\ClimberController@index                  | web
+|        | POST      | climbers                      | climbers.store        | App\Http\Controllers\ClimberController@store                  | web
+|        | GET|HEAD  | climbers/create               | climbers.create       | App\Http\Controllers\ClimberController@create                 | web
+|        | DELETE    | climbers/{climber}            | climbers.destroy      | App\Http\Controllers\ClimberController@destroy                | web
+|        | PUT|PATCH | climbers/{climber}            | climbers.update       | App\Http\Controllers\ClimberController@update                 | web
+|        | GET|HEAD  | climbers/{climber}            | climbers.show         | App\Http\Controllers\ClimberController@show                   | web
+|        | GET|HEAD  | climbers/{climber}/edit       | climbers.edit         | App\Http\Controllers\ClimberController@edit                   | web
+*/
+Route::resource('climbers', 'ClimberController');
 
 // Route routes ;)
-Route::get('/routes', 'RouteController@index');
-Route::get('/routes/create', 'RouteController@create')->middleware('auth');
-Route::get('/routes/{route}', 'RouteController@show');
-Route::post('/routes', 'RouteController@store')->middleware('auth');
-Route::get('/routes/{route}/edit', 'RouteController@edit')->middleware('auth');
-Route::patch('/routes/{route}', 'RouteController@update')->middleware('auth');
+/*
+|        | GET|HEAD  | routes                        | routes.index          | App\Http\Controllers\RouteController@index                    | web
+|        | POST      | routes                        | routes.store          | App\Http\Controllers\RouteController@store                    | web
+|        | GET|HEAD  | routes/create                 | routes.create         | App\Http\Controllers\RouteController@create                   | web
+|        | GET|HEAD  | routes/{route}                | routes.show           | App\Http\Controllers\RouteController@show                     | web
+|        | PUT|PATCH | routes/{route}                | routes.update         | App\Http\Controllers\RouteController@update                   | web
+|        | DELETE    | routes/{route}                | routes.destroy        | App\Http\Controllers\RouteController@destroy                  | web
+|        | GET|HEAD  | routes/{route}/edit           | routes.edit           | App\Http\Controllers\RouteController@edit                     | web
+*/
+Route::resource('routes', 'RouteController');
 
 // Auth routes
 Route::get('/login', '\App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
