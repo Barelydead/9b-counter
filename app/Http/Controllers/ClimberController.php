@@ -61,13 +61,13 @@ class ClimberController extends Controller
         Climber::create($request->all());
 
         $request->session()->flash('success', 'Climber was saved');
-        return redirect('/climbers');
+        return redirect('/admin');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Climber  $climber
      * @return \Illuminate\Http\Response
      */
     public function show(Climber $climber)
@@ -78,7 +78,7 @@ class ClimberController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Climber  $climber
      * @return \Illuminate\Http\Response
      */
     public function edit($climber)
@@ -95,12 +95,11 @@ class ClimberController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Climber  $climber
      * @return \Illuminate\Http\Response
      */
     public function update(Climber $climber, Request $request)
     {
-      // dd($climber);
       if ($route_id = $request->post('route-ascent-add')) {
         $climber->routes()->attach($route_id);
 
@@ -124,11 +123,16 @@ class ClimberController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Climber  $climber
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Climber $climber, Request $request)
     {
-        //
+        Activity::where('climber_id', $climber->id)->delete();
+
+        $climber->delete();
+
+        $request->session()->flash('success', 'Climber has beed deleted');
+        return redirect('/admin');
     }
 }

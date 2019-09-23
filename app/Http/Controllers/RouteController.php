@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Route;
 use App\Climber;
+use App\Activity;
 
 class RouteController extends Controller
 {
@@ -40,7 +41,8 @@ class RouteController extends Controller
     {
       Route::create($request->all());
 
-      return redirect('/routes');
+      $request->session()->flash('success', 'Route was created');
+      return redirect('/admin');
     }
 
     /**
@@ -79,15 +81,24 @@ class RouteController extends Controller
      */
     public function update(Request $request, Route $route)
     {
-      if ($climber_id = $request->post('climber-ascent')) {
+      if ($climber_id = $request->post('climber-ascent-add')) {
         $route->climbers()->attach($climber_id);
 
-        return redirect('/climbers');
+        $request->session()->flash('success', 'Route ascent added');
+        return redirect('/routes/' . $route->id . '/edit');
+      }
+
+      if ($climber_id = $request->post('climber-ascent-del')) {
+        $route->climbers()->detach($climber_id);
+
+        $request->session()->flash('success', 'Route ascent removed');
+        return redirect('/routes/' . $route->id . '/edit');
       }
 
       $route->update($request->all());
 
-      return redirect('/routes');
+      $request->session()->flash('success', 'Route updated');
+      return redirect('/routes/' . $route->id . '/edit');
     }
 
     /**
@@ -96,8 +107,13 @@ class RouteController extends Controller
      * @param  \App\Route  $route
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Route $route)
+    public function destroy(Route $route, Request $request)
     {
-        //
+      Activity::where('route_id', $route->id)->delete();
+
+      $route->delete();
+
+      $request->session()->flash('success', 'Route has beed deleted');
+      return redirect('/admin');
     }
 }

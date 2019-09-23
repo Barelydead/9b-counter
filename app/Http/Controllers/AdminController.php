@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Climber;
+use App\Route;
 
 class AdminController extends Controller
 {
@@ -23,6 +25,15 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $climber = new Climber;
+        $route = new route;
+
+        $climbers = $climber->all();
+        $routes = $route->all();
+
+        return view('admin.index', [
+          'routes' => $routes,
+          'climbers' => $climbers,
+        ]);
     }
 }
