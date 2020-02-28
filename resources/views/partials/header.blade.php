@@ -22,7 +22,7 @@
               <a class="nav__links" href="/climbers">Climbers</a>
             </li>
           </ul>
-          @if (Auth::check())
+          {{-- @if (Auth::check())
           <button class="button button--primary button--small ml-2">
             <a href="/admin">admin</a>
           </button>
@@ -32,7 +32,7 @@
           </form>
           @else
             <a href="/login" class="button button--small ml-2">login</a>
-          @endif
+          @endif --}}
         </div>
       </div>
     </div>

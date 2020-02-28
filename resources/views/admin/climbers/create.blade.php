@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.admin')
 
 @section('title', 'Climbers')
 
@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-8">
-        <form action="/climbers" method="POST" class="form">
+        <form action="/admin/climbers" method="POST" class="form">
           @csrf
           <div class="form-group">
             <label for="name">Name </label>

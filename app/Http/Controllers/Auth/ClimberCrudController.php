@@ -1,14 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use App\Climber;
 use App\Route;
 use App\Activity;
+use App\Http\Controllers\Controller;
 
-class ClimberController extends Controller
+class ClimberCrudController extends Controller
 {
+
+      /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,27 +28,19 @@ class ClimberController extends Controller
      */
     public function index(Request $request)
     {
-      $climbers = Climber::with('routes')->get();
-      $activity = Activity::with(['climber', 'route'])
-        ->orderBy('updated_at', 'desc')
-        ->take(5)
-        ->get();
+      $activeQuery = $request->getQueryString();
 
-      if ($request->query('sort') == 'sport') {
-        $climbers = $climbers->sortByDesc(function($climber) {
-          return $climber->nines();
-        });
-      } else if ($request->query('sort') == 'boulder') {
-        $climbers = $climbers->sortByDesc(function($climber) {
-          return $climber->eights();
-        });
-      } else {
-        $climbers = $climbers->sortBy('name');
-      }
+      $order = $request->query('order') === 'age' ||
+               $request->query('order') === 'name'
+               ? $request->query('order')
+               : 'id';
 
-      return view('public.climbers.index', [
+      $direction = $request->query('direction') === 'asc' ? 'asc' : 'desc';
+
+      $climbers = Climber::orderBy($order, $direction)->simplePaginate(10);
+
+      return view('admin.climbers.index', [
         'climbers' => $climbers,
-        'activity' => $activity
       ]);
     }
 
@@ -47,7 +51,7 @@ class ClimberController extends Controller
      */
     public function create()
     {
-      return view('public.climbers.create');
+      return view('admin.climbers.create');
     }
 
     /**
@@ -61,7 +65,7 @@ class ClimberController extends Controller
         Climber::create($request->all());
 
         $request->session()->flash('success', 'Climber was saved');
-        return redirect('/admin');
+        return redirect('/admin/climbers');
     }
 
     /**
@@ -72,7 +76,7 @@ class ClimberController extends Controller
      */
     public function show(Climber $climber)
     {
-      return view('public.climbers.show', ['climber' => $climber]);
+      return view('admin.climbers.show', ['climber' => $climber]);
     }
 
     /**
@@ -85,7 +89,7 @@ class ClimberController extends Controller
     {
         $routes = Route::all(['id', 'name', 'difficulty']);
 
-        return view('public.climbers.edit', [
+        return view('admin.climbers.edit', [
           'climber' => $climber,
           'routes' => $routes,
         ]);
@@ -104,20 +108,20 @@ class ClimberController extends Controller
         $climber->routes()->attach($route_id);
 
         $request->session()->flash('success', 'Route ascent registered');
-        return redirect('/climbers/' . $climber->id . '/edit');
+        return redirect('admin/climbers/' . $climber->id . '/edit');
       }
 
       if ($route_id = $request->post('route-ascent-del')) {
         $climber->routes()->detach($route_id);
 
         $request->session()->flash('success', 'Route ascent removed');
-        return redirect('/climbers/' . $climber->id . '/edit');
+        return redirect('/admin/climbers/' . $climber->id . '/edit');
       }
 
        $climber->update($request->all());
 
        $request->session()->flash('success', 'Climber updated');
-       return redirect('/climbers/' . $climber->id . '/edit');
+       return redirect('/admin/climbers/' . $climber->id . '/edit');
     }
 
     /**
@@ -133,6 +137,6 @@ class ClimberController extends Controller
         $climber->delete();
 
         $request->session()->flash('success', 'Climber has beed deleted');
-        return redirect('/admin');
+        return redirect('/admin/climbers');
     }
 }

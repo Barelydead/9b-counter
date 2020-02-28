@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.admin')
 
 @section('title', 'Add new route');
 
@@ -42,6 +42,12 @@
               <input class="form-check-input" type="radio" name="type" value="boulder" id="type2">
               <label class="form-check-label" for="type2">
                 Boulder
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="type" value="trad" id="type3">
+              <label class="form-check-label" for="type3">
+                Traditional
               </label>
             </div>
           </fieldset>

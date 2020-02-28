@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.admin')
 
 @section('title', 'Update Climbers')
 
@@ -34,7 +34,7 @@
         </form>
       </div>
       <div class="col-8">
-        <form action="/climbers/{{ $climber->id }}" method="POST" class="form mt-5">
+        <form action="/admin/climbers/{{ $climber->id }}" method="POST" class="form mt-5">
           @csrf
           <input type="hidden" name="_method" value="PUT">
           <h4>Add route to ascents</h4>
@@ -50,7 +50,7 @@
             <input type="submit" class="button" value="Register">
           </div>
         </form>
-        <form action="/climbers/{{ $climber->id }}" method="POST" class="form mt-5">
+        <form action="/admin/climbers/{{ $climber->id }}" method="POST" class="form mt-5">
           @csrf
           <input type="hidden" name="_method" value="PUT">
           <h4>Delete route ascent</h4>

@@ -21,19 +21,10 @@ class AdminController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $climber = new Climber;
-        $route = new route;
-
-        $climbers = $climber->all();
-        $routes = $route->all();
-
-        return view('admin.index', [
-          'routes' => $routes,
-          'climbers' => $climbers,
-        ]);
+        return view('admin.index');
     }
 }

@@ -1,5 +1,4 @@
-
-@extends('layout')
+@extends('layouts.admin')
 
 @section('title', 'Routes')
 

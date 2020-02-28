@@ -1,0 +1,16 @@
+.pager {
+  padding-top: 1rem;
+  border-top: 1px solid $off-white;
+  margin-top: 1rem;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__item {
+    & + & {
+      margin-left: 4rem;
+    }
+  }
+}
