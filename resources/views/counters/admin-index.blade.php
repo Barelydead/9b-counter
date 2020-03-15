@@ -26,8 +26,8 @@
             <td>{{ $counter->id }}</td>
             <td>{{ $counter->title }}</td>
             <td class="d-flex">
-              <a href="{{ route('counters.edit', $counter->id) }}" class="btn btn-warning">Edit</a>
-              <form action="{{ route('counters.destroy', $counter->id) }}" method="POST" class="ml-2">
+              <a href="{{ route('counters.edit', $counter->slug) }}" class="btn btn-warning">Edit</a>
+              <form action="{{ route('counters.destroy', $counter->slug) }}" method="POST" class="ml-2">
                 @csrf
                 @method('delete')
                 <button type="submit" class="btn btn-danger">Delete</button>

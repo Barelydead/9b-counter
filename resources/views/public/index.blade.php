@@ -9,7 +9,7 @@
   <div class="container">
     <main class="row">
       @foreach ($counters as $key => $counter)
-      <a class="blurb__link btn col-sm-12 col-md-6 col-lg-3" href="{{ route('counters.show', $counter->id) }}">
+      <a class="blurb__link btn col-sm-12 col-md-6 col-lg-3" href="{{ route('counters.show', $counter->slug) }}">
         <article class="blurb blurb--palette{{ $key % 4 + 1 }}">
           <div class="blurb__inner">
           <small class="blurb__category">{{ $counter->counter_type }}</small>

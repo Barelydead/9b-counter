@@ -10,13 +10,7 @@
 |
 */
 // Web routes
-
 Route::get('/', 'WebController@index')->name('front');
-Route::get('/trad', 'WebController@trad')->name('trad');
-Route::get('/sport-9a', 'WebController@sport9a')->name('sport-9a');
-Route::get('/sport-9b', 'WebController@sport9b')->name('sport-9b');
-Route::get('/boulder', 'WebController@boulder')->name('boulder');
-
 
 // Climber model routes
 Route::resource('climbers', 'ClimberController', [

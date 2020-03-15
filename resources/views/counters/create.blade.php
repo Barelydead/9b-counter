@@ -13,6 +13,10 @@
         <input type="text" name="title" placeholder="title" class="form-control">
       </div>
       <div class="form-group">
+        <label for="title">Description </label>
+        <textarea id="description" name="description" placeholder="description" class="form-control"></textarea>
+      </div>
+      <div class="form-group">
         <label for="year">Year </label>
         <input type="number" name="year" placeholder="year" class="form-control">
       </div>

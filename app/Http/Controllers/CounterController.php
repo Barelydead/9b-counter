@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Counter;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class CounterController extends Controller
@@ -33,9 +34,18 @@ class CounterController extends Controller
      */
     public function store(Request $request)
     {
+        // Create the slug and merge with request
+        $slug = Str::slug("{$request->title} {$request->year}", '-');
+        $slug = ['slug' => $slug];
+        $request->merge($slug);
+
+        $request->validate([
+          'slug' => 'unique:counters',
+        ]);
+
         $counter = Counter::create($request->all());
 
-        return redirect("counters/$counter->id/edit");
+        return redirect("counters/$counter->slug/edit");
     }
 
     /**
@@ -75,7 +85,7 @@ class CounterController extends Controller
       $counter->update($request->all());
 
       $request->session()->flash('success', 'Counter updated');
-      return redirect(route('counters.edit', $counter->id));
+      return redirect(route('counters.edit', $counter->slug));
     }
 
     /**
