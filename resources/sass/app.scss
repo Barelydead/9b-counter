@@ -1,29 +1,23 @@
 @import 'bootstrap-overrides';
 
 // Bootstrap grid
-@import '~bootstrap/scss/bootstrap-grid';
-@import '~bootstrap/scss/bootstrap-reboot';
-@import '~bootstrap/scss/type';
-@import '~bootstrap/scss/utilities';
-@import '~bootstrap/scss/forms';
+@import '~bootstrap';
 
 // Variables
 @import 'variables';
 
-// Base
-@import 'base/base';
-@import 'base/buttons';
-@import 'base/form';
-
 // Components
-@import 'components/climber-card';
-@import 'components/route-list-item';
-@import 'components/intro';
-@import 'components/activity';
-@import 'components/list';
-@import 'components/alert';
+@import 'components/blurb';
 
 // Layout
 @import 'layout/header';
 @import 'layout/footer';
-@import 'layout/main';
+
+
+.main-content {
+  min-height: 75vh;
+}
+
+.main-aside {
+  min-height: 85vh;
+}

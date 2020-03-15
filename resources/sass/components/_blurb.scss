@@ -1,0 +1,48 @@
+.blurb {
+  padding: 4rem;
+  color: $white;
+  width: 100%;
+  position: relative;
+  cursor: pointer;
+
+  &--palette1 {
+    background-color: $palette-1;
+  }
+
+  &--palette2 {
+    background-color: $palette-2;
+  }
+
+  &--palette3 {
+    background-color: $palette-3;
+  }
+
+  &--palette4 {
+    background-color: $palette-4;
+  }
+
+  & + & {
+    margin-left: 1rem;
+  }
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  &__category {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+  }
+
+  &__header {
+    text-align: center;
+    font-size: $text-lg;
+  }
+
+  &__link {
+    margin: 0 1rem;
+    width: 100%;
+    padding: 0;
+  }
+}

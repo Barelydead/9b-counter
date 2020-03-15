@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClimbersTable extends Migration
+class CreateCountersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateClimbersTable extends Migration
      */
     public function up()
     {
-        Schema::create('climbers', function (Blueprint $table) {
+        Schema::create('counters', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->string('name');
-            $table->enum('gender', ['male', 'female']);
-            $table->integer('age')->nullable();
-            $table->string('country')->nullable();
+            $table->text('title');
+            $table->integer('year');
+            $table->enum('counter_type', ['trad', 'sport', 'boulder']);
+            $table->text('minimum_grade');
+            $table->enum('gender', ['male', 'female', 'mixed']);
         });
     }
 
@@ -30,6 +31,6 @@ class CreateClimbersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('climbers');
+        Schema::dropIfExists('counters');
     }
 }

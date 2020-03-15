@@ -83,7 +83,7 @@ class ClimberController extends Controller
      */
     public function edit($climber)
     {
-        $routes = Route::all(['id', 'name', 'difficulty']);
+        $routes = Route::all(['id', 'name', 'grade']);
 
         return view('climbers.edit', [
           'climber' => $climber,
@@ -100,20 +100,6 @@ class ClimberController extends Controller
      */
     public function update(Climber $climber, Request $request)
     {
-      if ($route_id = $request->post('route-ascent-add')) {
-        $climber->routes()->attach($route_id);
-
-        $request->session()->flash('success', 'Route ascent registered');
-        return redirect('/climbers/' . $climber->id . '/edit');
-      }
-
-      if ($route_id = $request->post('route-ascent-del')) {
-        $climber->routes()->detach($route_id);
-
-        $request->session()->flash('success', 'Route ascent removed');
-        return redirect('/climbers/' . $climber->id . '/edit');
-      }
-
        $climber->update($request->all());
 
        $request->session()->flash('success', 'Climber updated');

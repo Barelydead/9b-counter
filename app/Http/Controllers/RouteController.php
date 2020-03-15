@@ -10,6 +10,15 @@ use App\Activity;
 class RouteController extends Controller
 {
     /**
+     * Set up auth.
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -81,20 +90,6 @@ class RouteController extends Controller
      */
     public function update(Request $request, Route $route)
     {
-      if ($climber_id = $request->post('climber-ascent-add')) {
-        $route->climbers()->attach($climber_id);
-
-        $request->session()->flash('success', 'Route ascent added');
-        return redirect('/routes/' . $route->id . '/edit');
-      }
-
-      if ($climber_id = $request->post('climber-ascent-del')) {
-        $route->climbers()->detach($climber_id);
-
-        $request->session()->flash('success', 'Route ascent removed');
-        return redirect('/routes/' . $route->id . '/edit');
-      }
-
       $route->update($request->all());
 
       $request->session()->flash('success', 'Route updated');

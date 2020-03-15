@@ -13,10 +13,18 @@ class Climber extends Model
     protected $guarded = [];
 
     /**
-     * Routes relationship.
+     * Routes the climber has ascended.
      */
     public function routes() {
       return $this->belongsToMany(Route::class)->withTimestamps()->withPivot('route_id', 'updated_at');
+    }
+
+    /**
+     * Counters that the climber is featured on.
+     */
+    public function counters()
+    {
+        return $this->belongsToMany(Counter::class);
     }
 
     /**

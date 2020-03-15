@@ -8,7 +8,7 @@ use Faker\Generator as Faker;
 $factory->define(Route::class, function (Faker $faker) {
   return [
     'name' => $faker->sentence(2),
-    'difficulty' => '9b',
+    'grade' => '9b',
     'country' => $faker->country,
     'crag' => $faker->word,
     'type' => $faker->randomElement(['boulder' ,'sport']),

@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,33 +10,65 @@
 |
 */
 // Web routes
-Route::get('/', 'ClimberController@index')->name('front');
+
+Route::get('/', 'WebController@index')->name('front');
+Route::get('/trad', 'WebController@trad')->name('trad');
+Route::get('/sport-9a', 'WebController@sport9a')->name('sport-9a');
+Route::get('/sport-9b', 'WebController@sport9b')->name('sport-9b');
+Route::get('/boulder', 'WebController@boulder')->name('boulder');
 
 
-// Climber routes
-/*
-|        | GET|HEAD  | climbers                      | climbers.index        | App\Http\Controllers\ClimberController@index                  | web
-|        | POST      | climbers                      | climbers.store        | App\Http\Controllers\ClimberController@store                  | web
-|        | GET|HEAD  | climbers/create               | climbers.create       | App\Http\Controllers\ClimberController@create                 | web
-|        | DELETE    | climbers/{climber}            | climbers.destroy      | App\Http\Controllers\ClimberController@destroy                | web
-|        | PUT|PATCH | climbers/{climber}            | climbers.update       | App\Http\Controllers\ClimberController@update                 | web
-|        | GET|HEAD  | climbers/{climber}            | climbers.show         | App\Http\Controllers\ClimberController@show                   | web
-|        | GET|HEAD  | climbers/{climber}/edit       | climbers.edit         | App\Http\Controllers\ClimberController@edit                   | web
-*/
-Route::resource('climbers', 'ClimberController');
+// Climber model routes
+Route::resource('climbers', 'ClimberController', [
+  'names' => [
+      'index' => 'climbers.index',
+      'create' => 'climbers.create',
+      'show' => 'climbers.show',
+      'store' => 'climbers.store',
+      'update' => 'climbers.update',
+      'edit' => 'climbers.edit',
+      'destroy' => 'climbers.destroy',
+  ]
+]);
 
-// Route routes ;)
-/*
-|        | GET|HEAD  | routes                        | routes.index          | App\Http\Controllers\RouteController@index                    | web
-|        | POST      | routes                        | routes.store          | App\Http\Controllers\RouteController@store                    | web
-|        | GET|HEAD  | routes/create                 | routes.create         | App\Http\Controllers\RouteController@create                   | web
-|        | GET|HEAD  | routes/{route}                | routes.show           | App\Http\Controllers\RouteController@show                     | web
-|        | PUT|PATCH | routes/{route}                | routes.update         | App\Http\Controllers\RouteController@update                   | web
-|        | DELETE    | routes/{route}                | routes.destroy        | App\Http\Controllers\RouteController@destroy                  | web
-|        | GET|HEAD  | routes/{route}/edit           | routes.edit           | App\Http\Controllers\RouteController@edit                     | web
-*/
-Route::resource('routes', 'RouteController');
+// Route model routes
+Route::resource('routes', 'RouteController', [
+  'names' => [
+      'index' => 'routes.index',
+      'create' => 'routes.create',
+      'show' => 'routes.show',
+      'store' => 'routes.store',
+      'update' => 'routes.update',
+      'edit' => 'routes.edit',
+      'destroy' => 'routes.destroy',
+  ]
+]);
 
+// Route model routes
+Route::resource('counters', 'CounterController', [
+  'names' => [
+      'index' => 'counters.index',
+      'create' => 'counters.create',
+      'show' => 'counters.show',
+      'store' => 'counters.store',
+      'update' => 'counters.update',
+      'edit' => 'counters.edit',
+      'destroy' => 'counters.destroy',
+  ]
+]);
+
+// Route model routes
+Route::resource('counter-rows', 'CounterRowController', [
+  'names' => [
+      'index' => 'counterRows.index',
+      'create' => 'counterRows.create',
+      'show' => 'counterRows.show',
+      'store' => 'counterRows.store',
+      'update' => 'counterRows.update',
+      'edit' => 'counterRows.edit',
+      'destroy' => 'counterRows.destroy',
+  ]
+]);
 // Auth routes
 Route::get('/login', '\App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', '\App\Http\Controllers\Auth\LoginController@login');

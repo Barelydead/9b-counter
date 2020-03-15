@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.admin')
 
 @section('title', 'Climbers')
 
@@ -6,7 +6,7 @@
   @include('components/intro', ['title' => 'Add new climber', 'preamble' => ''])
 
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
       <div class="col-8">
         <form action="/climbers" method="POST" class="form">
           @csrf
@@ -27,7 +27,7 @@
               </select>
             </div>
           <div class="form-group">
-            <input type="submit" class="button" value="Add climber">
+            <input type="submit" class="btn btn-primary" value="Add climber">
           </div>
         </form>
       </div>

@@ -1,5 +1,5 @@
 
-@extends('layout')
+@extends('layouts.public')
 
 @section('title', 'Climbers')
 
@@ -35,7 +35,7 @@
     <div class="row">
       <div class="col-12">
         <div class="climber-card__route">
-          <a href="/routes/{{ $route->id }}">{{$route->name}} - {{$route->difficulty}}</a>
+          <a href="/routes/{{ $route->id }}">{{$route->name}} - {{$route->grade}}</a>
         </div>
       </div>
     </div>

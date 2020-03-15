@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.admin')
 
 @section('title', 'Add new route');
 
@@ -6,7 +6,7 @@
   @include('components/intro', ['title' => 'Add new route', 'preamble' => ''])
 
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row">
       <div class="col-8">
         <form action="/routes" method="POST" class="form">
           @csrf
@@ -15,8 +15,8 @@
             <input type="text" name="name" placeholder="name" class="form-control">
           </div>
           <div class="form-group">
-            <label for="difficulty">Difficulty</label>
-            <input type="text" name="difficulty" placeholder="difficulty" class="form-control">
+            <label for="grade">grade</label>
+            <input type="text" name="grade" placeholder="grade" class="form-control">
           </div>
           <div class="form-group">
             <label for="country">Country</label>
@@ -44,9 +44,15 @@
                 Boulder
               </label>
             </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="type" value="trad" id="type3">
+              <label class="form-check-label" for="type3">
+                Traditional
+              </label>
+            </div>
           </fieldset>
           <div class="form-group">
-            <input type="submit" class="button" value="Add route">
+            <input type="submit" class="btn btn-primary" value="Add route">
           </div>
         </form>
       </div>
