@@ -111,4 +111,18 @@ class RouteController extends Controller
       $request->session()->flash('success', 'Route has beed deleted');
       return redirect('/admin');
     }
+
+    /**
+     * Display a admin listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function adminIndex()
+    {
+      $routes = Route::all();
+
+      return view('routes.admin-index', [
+        'routes' => $routes,
+      ]);
+    }
 }

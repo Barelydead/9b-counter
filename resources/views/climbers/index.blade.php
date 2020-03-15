@@ -19,7 +19,7 @@
         @foreach ($climbers as $climber)
           <tr>
             <td>{{ $climber->name }}</td>
-            <td>{{ $climber->country }}</td>
+            <td><img class="image-responsive" src="{{ $climber->flag() }}">{{ $climber->country }}</td>
             <td>{{ $climber->age }}</td>
           <tr>
         @endforeach

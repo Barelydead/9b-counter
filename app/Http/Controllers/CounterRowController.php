@@ -10,23 +10,13 @@ use Illuminate\Http\Request;
 class CounterRowController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-
+      return view('counterrows.create');
     }
 
     /**
@@ -57,25 +47,14 @@ class CounterRowController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(CounterRow $counterRow)
     {
-        //
+        return view('counterrows.edit', compact('counterRow'));
     }
 
     /**
@@ -85,9 +64,12 @@ class CounterRowController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, CounterRow $counterRow)
     {
-        //
+        $counterRow->update($request->all());
+
+        $request->session()->flash('success', 'Counter updated');
+        return redirect(route('counterRows.edit', $counterRow->id));
     }
 
     /**
@@ -96,8 +78,25 @@ class CounterRowController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(CounterRow $counterRow, Request $request)
     {
-        //
+      $counterRow->delete();
+
+      $request->session()->flash('success', 'Row has been deleted');
+      return redirect(route('counterRows.admin-index'));
+    }
+
+    /**
+     * Display a admin listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function adminIndex(Request $request)
+    {
+      $counterRows = CounterRow::all();
+
+      return view('counterRows.admin-index', [
+        'counterRows' => $counterRows,
+      ]);
     }
 }

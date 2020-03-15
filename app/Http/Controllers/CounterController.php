@@ -72,9 +72,12 @@ class CounterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Counter $counter)
     {
+      $counter->update($request->all());
 
+      $request->session()->flash('success', 'Counter updated');
+      return redirect(route('counters.edit', $counter->id));
     }
 
     /**
@@ -86,5 +89,19 @@ class CounterController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Display a admin listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function adminIndex(Request $request)
+    {
+      $counters = Counter::all();
+
+      return view('counters.admin-index', [
+        'counters' => $counters,
+      ]);
     }
 }

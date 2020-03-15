@@ -61,7 +61,7 @@ class ClimberController extends Controller
         Climber::create($request->all());
 
         $request->session()->flash('success', 'Climber was saved');
-        return redirect('/admin');
+        return redirect(route('climbers.admin-index'));
     }
 
     /**
@@ -103,7 +103,7 @@ class ClimberController extends Controller
        $climber->update($request->all());
 
        $request->session()->flash('success', 'Climber updated');
-       return redirect('/climbers/' . $climber->id . '/edit');
+       return redirect(route('climbers.edit', $climber->id));
     }
 
     /**
@@ -114,11 +114,23 @@ class ClimberController extends Controller
      */
     public function destroy(Climber $climber, Request $request)
     {
-        Activity::where('climber_id', $climber->id)->delete();
-
         $climber->delete();
 
-        $request->session()->flash('success', 'Climber has beed deleted');
-        return redirect('/admin');
+        $request->session()->flash('success', 'Climber has been deleted');
+        return redirect(route('climbers.admin-index'));
+    }
+
+    /**
+     * Display a admin listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function adminIndex(Request $request)
+    {
+      $climbers = Climber::all();
+
+      return view('climbers.admin-index', [
+        'climbers' => $climbers,
+      ]);
     }
 }

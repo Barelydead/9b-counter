@@ -2,15 +2,15 @@
   <li class="nav-item mt-2">
     <h3 class="nav-link text-white">Content</h3>
   <li class="nav-item mt-2">
-    <a class="nav-link text-light" href="{{ route('climbers.create') }}">Add new climber</a>
+    <a class="nav-link text-light" href="{{ route('climbers.admin-index') }}">Climbers</a>
   </li>
   <li class="nav-item mt-2">
-    <a class="nav-link text-light" href="{{ route('routes.create') }}">Add new route</a>
+    <a class="nav-link text-light" href="{{ route('routes.admin-index') }}">Routes</a>
   </li>
   <li class="nav-item mt-2">
-    <a class="nav-link text-light"" href="{{ route('counters.create') }}">Add new counter</a>
+    <a class="nav-link text-light"" href="{{ route('counters.admin-index') }}">Counters</a>
   </li>
   <li class="nav-item mt-2">
-    <a class="nav-link text-light" href="{{ route('counterRows.create') }}">Add new counter row</a>
+    <a class="nav-link text-light" href="{{ route('counterRows.admin-index') }}">Counter rows</a>
   </li>
 </ul>

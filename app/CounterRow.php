@@ -22,4 +22,8 @@ class CounterRow extends Model
     public function route() {
         return $this->belongsTo(Route::class)->withDefault();
     }
+
+    public function counter() {
+        return $this->belongsTo(Counter::class)->withDefault();
+    }
 }

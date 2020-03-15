@@ -31,6 +31,8 @@ Route::resource('climbers', 'ClimberController', [
   ]
 ]);
 
+Route::get('admin/climbers', 'ClimberController@adminIndex')->name('climbers.admin-index');
+
 // Route model routes
 Route::resource('routes', 'RouteController', [
   'names' => [
@@ -43,6 +45,8 @@ Route::resource('routes', 'RouteController', [
       'destroy' => 'routes.destroy',
   ]
 ]);
+
+Route::get('admin/routes', 'RouteController@adminIndex')->name('routes.admin-index');
 
 // Route model routes
 Route::resource('counters', 'CounterController', [
@@ -57,6 +61,8 @@ Route::resource('counters', 'CounterController', [
   ]
 ]);
 
+Route::get('admin/counters', 'CounterController@adminIndex')->name('counters.admin-index');;
+
 // Route model routes
 Route::resource('counter-rows', 'CounterRowController', [
   'names' => [
@@ -69,6 +75,9 @@ Route::resource('counter-rows', 'CounterRowController', [
       'destroy' => 'counterRows.destroy',
   ]
 ]);
+
+Route::get('admin/counter-rows', 'CounterRowController@adminIndex')->name('counterRows.admin-index');
+
 // Auth routes
 Route::get('/login', '\App\Http\Controllers\Auth\LoginController@showLoginForm')->name('login');
 Route::post('/login', '\App\Http\Controllers\Auth\LoginController@login');
