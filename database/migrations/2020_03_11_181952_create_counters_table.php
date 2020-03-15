@@ -17,6 +17,7 @@ class CreateCountersTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->text('title');
+            $table->text('description');
             $table->integer('year');
             $table->enum('counter_type', ['trad', 'sport', 'boulder']);
             $table->text('minimum_grade');

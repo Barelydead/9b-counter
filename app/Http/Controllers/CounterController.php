@@ -8,13 +8,11 @@ use Illuminate\Http\Request;
 class CounterController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * Set auth for admin routes
      */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('auth')->except(['index', 'show']);
     }
 
     /**
@@ -86,9 +84,12 @@ class CounterController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Counter $counter, Request $request)
     {
-        //
+      $counter->delete();
+
+      $request->session()->flash('success', 'Counter has been deleted');
+      return redirect(route('counters.admin-index'));
     }
 
     /**

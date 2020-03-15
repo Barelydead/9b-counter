@@ -3,7 +3,7 @@
 @section('title', 'Climbers')
 
 @section('main')
-  @include('components/intro', ['title' => 'Edit counter', 'preamble' => ''])
+  @include('components/intro', ['title' => $counter->title, 'preamble' => $counter->description])
 
   <div class="container">
     <table class="table table-dark">

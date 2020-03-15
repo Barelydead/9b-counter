@@ -10,6 +10,14 @@ use Illuminate\Http\Request;
 class CounterRowController extends Controller
 {
     /**
+     * Set auth for admin routes
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

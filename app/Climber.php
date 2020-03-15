@@ -64,6 +64,6 @@ class Climber extends Model
         return asset("images/flags/$country.svg");
       }
 
-      return asset("images/flags/sweden.svg");
+      return asset("images/flags/no-flag.png");
     }
 }

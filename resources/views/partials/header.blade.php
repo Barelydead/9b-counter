@@ -18,6 +18,11 @@
             <li class="nav__item">
               <a class="nav__links text-dark" href="/climbers">Climbers</a>
             </li>
+            @if (Auth::check())
+              <li class="nav__item">
+                <a class="nav__links text-primary" href="/admin">Admin</a>
+              </li>
+            @endif
           </ul>
         </div>
       </div>

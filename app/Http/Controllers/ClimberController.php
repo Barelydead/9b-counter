@@ -9,6 +9,15 @@ use App\Activity;
 
 class ClimberController extends Controller
 {
+
+    /**
+     * Set auth for admin routes
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      *

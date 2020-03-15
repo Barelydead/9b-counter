@@ -8,38 +8,16 @@
 
   <div class="container">
     <main class="row">
-      <a class="blurb__link btn col-sm" href="{{ route('sport-9b') }}">
-        <article class="blurb blurb--palette1">
+      @foreach ($counters as $key => $counter)
+      <a class="blurb__link btn col-sm-12 col-md-6 col-lg-3" href="{{ route('counters.show', $counter->id) }}">
+        <article class="blurb blurb--palette{{ $key % 4 + 1 }}">
           <div class="blurb__inner">
-            <small class="blurb__category">Sport</small>
-            <h2 class="blurb__header">9B</h2>
+          <small class="blurb__category">{{ $counter->counter_type }}</small>
+            <h2 class="blurb__header">{{ $counter->minimum_grade }}</h2>
           </div>
         </article>
       </a>
-      <a class="blurb__link btn col-sm" href="{{ route('sport-9a') }}">
-        <article class="blurb blurb--palette2">
-          <div class="blurb__inner">
-            <small class="blurb__category">Sport</small>
-            <h2 class="blurb__header">9A</h2>
-          </div>
-        </article>
-      </a>
-      <a class="blurb__link btn col-sm" href="{{ route('boulder') }}">
-        <article class="blurb blurb--palette3">
-          <div class="blurb__inner">
-            <small class="blurb__category">Boulder</small>
-            <h2 class="blurb__header">8C+</h2>
-          </div>
-        </article>
-      </a>
-      <a class="blurb__link btn col-sm" href="{{ route('trad') }}">
-        <article class="blurb blurb--palette4">
-          <div class="blurb__inner">
-            <small class="blurb__category">Trad</small>
-            <h2 class="blurb__header">E10</h2>
-          </div>
-        </article>
-      </a>
+      @endforeach
     </main>
   </div>
 @endsection
