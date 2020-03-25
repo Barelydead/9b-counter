@@ -23,6 +23,9 @@ class CounterRow extends Model
         return $this->belongsTo(Route::class)->withDefault();
     }
 
+    /**
+     * The counter this row belongs to.
+     */
     public function counter() {
         return $this->belongsTo(Counter::class)->withDefault();
     }

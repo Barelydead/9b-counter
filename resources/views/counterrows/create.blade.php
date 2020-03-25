@@ -11,20 +11,32 @@
         <form method="POST" action="{{ route('counterRows.store') }}">
           @csrf
           <div class="form-group">
-            <label for="climber">Counter </label>
-            <input type="text" name="counter_id" placeholder="counter" class="form-control">
+            <label for="counter_id">Counter</label>
+            <select name="counter_id" class="form-control" id="counter_id" required>
+                @foreach ($counters as $counter)
+                <option class="form__option" value="{{ $counter->id }}">{{$counter->title}} ({{ $counter->id }})</option>
+                @endforeach
+            </select>
           </div>
           <div class="form-group">
-            <label for="climber">Climber</label>
-            <input type="text" name="climber_id" placeholder="climber" class="form-control">
+            <label for="climber_id">Climber</label>
+            <select name="climber_id" class="form-control" id="climber_id" required>
+                @foreach ($climbers as $climber)
+                <option class="form__option" value="{{ $climber->id }}">{{$climber->name}} ({{ $climber->id }})</option>
+                @endforeach
+            </select>
           </div>
           <div class="form-group">
-            <label for="route">Route </label>
-            <input type="text" name="route_id" placeholder="route" class="form-control">
+            <label for="route_id">Route</label>
+            <select name="route_id" class="form-control" id="route_id" required>
+                @foreach ($routes as $route)
+                <option class="form__option" value="{{ $route->id }}">{{$route->name}} ({{ $route->id }})</option>
+                @endforeach
+            </select>
           </div>
           <div class="form-group">
             <label for="points">Points </label>
-            <input type="text" name="points" placeholder="points" class="form-control">
+            <input type="text" name="points" placeholder="points" class="form-control" required>
           </div>
           <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Continue">

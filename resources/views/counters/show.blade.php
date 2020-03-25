@@ -6,12 +6,13 @@
   @include('components/intro', ['title' => $counter->title, 'preamble' => $counter->description])
 
   <div class="container">
+    <div class="mb-2">Last updated: {{ $counter->updated_at->diffForHumans() }}</div>
     <table class="table table-dark">
       <thead>
         <tr>
           <th scope="col">Climber</th>
-          <th scope="col">Routes</th>
-          <th scope="col">Total</th>
+          <th scope="col">Routes and awarded points</th>
+          <th scope="col">Total points</th>
         </tr>
       </thead>
       <tbody>

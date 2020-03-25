@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\CounterRow;
 use App\Climber;
+use App\CounterRow;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class CounterRowController extends Controller
@@ -24,7 +25,11 @@ class CounterRowController extends Controller
      */
     public function create()
     {
-      return view('counterrows.create');
+      $counters = DB::table('counters')->orderBy('title')->select('title', 'id')->get();
+      $routes = DB::table('routes')->orderBy('name')->select('name', 'id')->get();
+      $climbers = DB::table('climbers')->orderBy('name')->select('name', 'id')->get();
+
+      return view('counterrows.create', compact(['climbers', 'routes', 'counters']));
     }
 
     /**
@@ -43,11 +48,11 @@ class CounterRowController extends Controller
 
         $climber = Climber::find($climber_id);
 
-        if ($climber->counters()->find($counter_id) != null) {
+        if (!$climber->hasCounter($counter_id)) {
           $climber->counters()->attach($request->counter_id);
         }
 
-        if ($climber->routes()->find($route_id) != null) {
+        if (!$climber->hasRoute($route_id)) {
           $climber->routes()->attach($request->route_id);
         }
 
@@ -62,7 +67,11 @@ class CounterRowController extends Controller
      */
     public function edit(CounterRow $counterRow)
     {
-        return view('counterrows.edit', compact('counterRow'));
+        $counters = DB::table('counters')->orderBy('title')->select('title', 'id')->get();
+        $routes = DB::table('routes')->orderBy('name')->select('name', 'id')->get();
+        $climbers = DB::table('climbers')->orderBy('name')->select('name', 'id')->get();
+
+        return view('counterrows.edit', compact(['counterRow', 'climbers', 'routes', 'counters']));
     }
 
     /**

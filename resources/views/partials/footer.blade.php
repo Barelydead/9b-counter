@@ -1,13 +1,12 @@
 <footer class="footer">
   <div class="container">
     <div class="row">
-      <div class="col-sm-12 col-md-4">
+      <div class="col-sm-12 col-md-4 px-5">
         <h4>Site information</h4>
         <p>This is a fan page for the show climbing daily and has no commercial purpose. </p>
         <p>If you would like to help administer the counters contact me at <a href="mailto:kiffen_@hotmail.com">Christofer</a></p>
-        <p>This project is open source and for anyone interested in contributing please checkout the <a href="https://github.com/Barelydead/9b-counter">Github repos</a>.
       </div>
-      <div class="col-sm-12 col-md-4">
+      <div class="col-sm-12 col-md-4 px-5">
         <h4>Checkout out Epic TV</h4>
         <p>This site would not exist without the great work of Epic TV so please check them out.</p>
         <ul>
@@ -19,7 +18,7 @@
           </li>
         </ul>
       </div>
-      <div class="col-sm-12 col-md-4">
+      <div class="col-sm-12 col-md-4 px-5">
         <h4>Checkout the youtube chanel</h4>
       </div>
     </div>

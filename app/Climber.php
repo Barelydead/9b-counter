@@ -24,7 +24,28 @@ class Climber extends Model
      */
     public function counters()
     {
-        return $this->belongsToMany(Counter::class);
+        return $this->belongsToMany(Counter::class)->withTimestamps();
+    }
+
+    /**
+     * Check if climber is featured on any counter
+     */
+    public function hasCounters() {
+      return count($this->counters) > 0;
+    }
+
+    /**
+     * Check if climber is featured on counter
+     */
+    public function hasCounter($id) {
+      return count($this->counters->where('id', $id)) > 0;
+    }
+
+    /**
+     * Check if climber has route ascent
+     */
+    public function hasRoute($id) {
+      return count($this->routes->where('id', $id)) > 0;
     }
 
     /**

@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Support\Facades\Hash;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -9,8 +11,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 // Web routes
-Route::get('/', 'WebController@index')->name('front');
+Route::get('/', 'CounterController@index')->name('front');
 
 // Climber model routes
 Route::resource('climbers', 'ClimberController', [

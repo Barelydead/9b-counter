@@ -16,6 +16,12 @@ class CounterController extends Controller
         $this->middleware('auth')->except(['index', 'show']);
     }
 
+    public function index() {
+      $counterGroups = Counter::orderByDesc('year')->get()->groupBy('year');
+
+      return view('counters.index', compact('counterGroups'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

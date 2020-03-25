@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Climber;
-use App\Route;
-use App\Activity;
 
 class ClimberController extends Controller
 {
@@ -25,27 +23,10 @@ class ClimberController extends Controller
      */
     public function index(Request $request)
     {
-      $climbers = Climber::with('routes')->get();
-      $activity = Activity::with(['climber', 'route'])
-        ->orderBy('updated_at', 'desc')
-        ->take(5)
-        ->get();
-
-      if ($request->query('sort') == 'sport') {
-        $climbers = $climbers->sortByDesc(function($climber) {
-          return $climber->nines();
-        });
-      } else if ($request->query('sort') == 'boulder') {
-        $climbers = $climbers->sortByDesc(function($climber) {
-          return $climber->eights();
-        });
-      } else {
-        $climbers = $climbers->sortBy('name');
-      }
+      $climbers = Climber::with('counters')->get();
 
       return view('climbers.index', [
         'climbers' => $climbers,
-        'activity' => $activity
       ]);
     }
 
@@ -92,12 +73,7 @@ class ClimberController extends Controller
      */
     public function edit($climber)
     {
-        $routes = Route::all(['id', 'name', 'grade']);
-
-        return view('climbers.edit', [
-          'climber' => $climber,
-          'routes' => $routes,
-        ]);
+        return view('climbers.edit', ['climber' => $climber]);
     }
 
     /**
