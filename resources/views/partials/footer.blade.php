@@ -19,7 +19,9 @@
         </ul>
       </div>
       <div class="col-sm-12 col-md-4 px-5">
-        <h4>Checkout the youtube chanel</h4>
+        <h4>Updates</h4>
+        <p>I will try to keep the counters up to date every week. But no garantees can be made</p>
+        <p>Older counter will be added in the future.</p>
       </div>
     </div>
   </div>
