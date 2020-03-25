@@ -1,12 +1,11 @@
 <?php
 
 namespace App;
-
 use Illuminate\Database\Eloquent\Model;
 
 class Route extends Model
 {
-    /** @var $guarded description */
+    /** @var $guarded attributes */
     protected $guarded = [];
 
     /**

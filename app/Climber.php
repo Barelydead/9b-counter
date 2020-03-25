@@ -13,10 +13,39 @@ class Climber extends Model
     protected $guarded = [];
 
     /**
-     * Routes relationship.
+     * Routes the climber has ascended.
      */
     public function routes() {
       return $this->belongsToMany(Route::class)->withTimestamps()->withPivot('route_id', 'updated_at');
+    }
+
+    /**
+     * Counters that the climber is featured on.
+     */
+    public function counters()
+    {
+        return $this->belongsToMany(Counter::class)->withTimestamps();
+    }
+
+    /**
+     * Check if climber is featured on any counter
+     */
+    public function hasCounters() {
+      return count($this->counters) > 0;
+    }
+
+    /**
+     * Check if climber is featured on counter
+     */
+    public function hasCounter($id) {
+      return count($this->counters->where('id', $id)) > 0;
+    }
+
+    /**
+     * Check if climber has route ascent
+     */
+    public function hasRoute($id) {
+      return count($this->routes->where('id', $id)) > 0;
     }
 
     /**
@@ -56,6 +85,6 @@ class Climber extends Model
         return asset("images/flags/$country.svg");
       }
 
-      return asset("images/flags/sweden.svg");
+      return asset("images/flags/no-flag.png");
     }
 }

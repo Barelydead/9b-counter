@@ -4,11 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Climber;
-use App\Route;
-use App\Activity;
 
 class ClimberController extends Controller
 {
+
+    /**
+     * Set auth for admin routes
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,27 +23,10 @@ class ClimberController extends Controller
      */
     public function index(Request $request)
     {
-      $climbers = Climber::with('routes')->get();
-      $activity = Activity::with(['climber', 'route'])
-        ->orderBy('updated_at', 'desc')
-        ->take(5)
-        ->get();
+      $climbers = Climber::with('counters')->get();
 
-      if ($request->query('sort') == 'sport') {
-        $climbers = $climbers->sortByDesc(function($climber) {
-          return $climber->nines();
-        });
-      } else if ($request->query('sort') == 'boulder') {
-        $climbers = $climbers->sortByDesc(function($climber) {
-          return $climber->eights();
-        });
-      } else {
-        $climbers = $climbers->sortBy('name');
-      }
-
-      return view('public.climbers.index', [
+      return view('climbers.index', [
         'climbers' => $climbers,
-        'activity' => $activity
       ]);
     }
 
@@ -47,7 +37,7 @@ class ClimberController extends Controller
      */
     public function create()
     {
-      return view('public.climbers.create');
+      return view('climbers.create');
     }
 
     /**
@@ -61,7 +51,7 @@ class ClimberController extends Controller
         Climber::create($request->all());
 
         $request->session()->flash('success', 'Climber was saved');
-        return redirect('/admin');
+        return redirect(route('climbers.admin-index'));
     }
 
     /**
@@ -72,7 +62,7 @@ class ClimberController extends Controller
      */
     public function show(Climber $climber)
     {
-      return view('public.climbers.show', ['climber' => $climber]);
+      return view('climbers.show', ['climber' => $climber]);
     }
 
     /**
@@ -83,12 +73,7 @@ class ClimberController extends Controller
      */
     public function edit($climber)
     {
-        $routes = Route::all(['id', 'name', 'difficulty']);
-
-        return view('public.climbers.edit', [
-          'climber' => $climber,
-          'routes' => $routes,
-        ]);
+        return view('climbers.edit', ['climber' => $climber]);
     }
 
     /**
@@ -100,24 +85,10 @@ class ClimberController extends Controller
      */
     public function update(Climber $climber, Request $request)
     {
-      if ($route_id = $request->post('route-ascent-add')) {
-        $climber->routes()->attach($route_id);
-
-        $request->session()->flash('success', 'Route ascent registered');
-        return redirect('/climbers/' . $climber->id . '/edit');
-      }
-
-      if ($route_id = $request->post('route-ascent-del')) {
-        $climber->routes()->detach($route_id);
-
-        $request->session()->flash('success', 'Route ascent removed');
-        return redirect('/climbers/' . $climber->id . '/edit');
-      }
-
        $climber->update($request->all());
 
        $request->session()->flash('success', 'Climber updated');
-       return redirect('/climbers/' . $climber->id . '/edit');
+       return redirect(route('climbers.edit', $climber->id));
     }
 
     /**
@@ -128,11 +99,23 @@ class ClimberController extends Controller
      */
     public function destroy(Climber $climber, Request $request)
     {
-        Activity::where('climber_id', $climber->id)->delete();
-
         $climber->delete();
 
-        $request->session()->flash('success', 'Climber has beed deleted');
-        return redirect('/admin');
+        $request->session()->flash('success', 'Climber has been deleted');
+        return redirect(route('climbers.admin-index'));
+    }
+
+    /**
+     * Display a admin listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function adminIndex(Request $request)
+    {
+      $climbers = Climber::all();
+
+      return view('climbers.admin-index', [
+        'climbers' => $climbers,
+      ]);
     }
 }

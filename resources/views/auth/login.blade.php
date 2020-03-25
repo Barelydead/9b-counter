@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.public')
 
 @section('main')
 <div class="container">
@@ -49,7 +49,7 @@
 
         <div class="form-group row mb-0">
           <div class="col-md-8 offset-md-4">
-            <button type="submit" class="button">
+            <button type="submit" class="btn btn-primary">
               {{ __('Login') }}
             </button>
 

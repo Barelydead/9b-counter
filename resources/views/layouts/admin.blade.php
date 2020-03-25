@@ -5,38 +5,43 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Admin | 9B Counter | @yield('title')</title>
+  <title>9B Counter | @yield('title')</title>
   <link rel="shortcut icon" href="/favicon.ico">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
 
-@include('partials.header')
+  @include('partials.header')
 
-
-<body>
-  <main class="container-fluid">
-    <div class="row">
-      @if (Session::has('success'))
-       <div class="alert alert--success">{{ Session::get('success') }}</div>
-      @endif
-      @if (Session::has('error'))
-       <div class="alert alert--error">{{ Session::get('error') }}</div>
-      @endif
-
-      <div class="main-admin">
-        <aside>
-          @include('partials.admin-sidebar')
-        </aside>
-        <main>
+  <body>
+    <main class="main-content">
+      <div class="row no-gutters">
+        <div class="col-md-12 col-lg-3 col-xl-2 bg-secondary">
+          @include('partials.aside')
+        </div>
+        <div class="col-md-12 col-lg-9 col-xl-10 main-aside">
+          @if (Session::has('success'))
+          <div class="alert alert-success">{{ Session::get('success') }}</div>
+          @endif
+          @if (Session::has('error'))
+          <div class="alert alert-error">{{ Session::get('error') }}</div>
+          @endif
+          @if ($errors->any())
+              <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                          <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+              </div>
+          @endif
           @yield('main')
-        </main>
+        </div>
       </div>
-    </div>
-  </main>
-</body>
+    </main>
+  </body>
 
-@include('partials.footer')
+  @include('partials.footer')
 
-<script src="{{asset('js/app.js')}}"></script>
+  <script src="{{asset('js/app.js')}}"></script>
 </html>

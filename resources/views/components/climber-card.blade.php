@@ -21,7 +21,7 @@
     <div class="row">
       <div class="col-12">
         <div class="climber-card__route">
-          <p>{{$route->name}} - {{$route->difficulty}}</p>
+          <p>{{$route->name}} - {{$route->grade}}</p>
         </div>
       </div>
     </div>
