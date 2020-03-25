@@ -20,7 +20,7 @@
           @if ($climber->hasCounters())
             <tr>
               <td>{{ $climber->name }}</td>
-              <td>{{ $climber->country }}</td>
+              <td class="text-capitalize">{{ $climber->country }}</td>
               <td>
                 @foreach ($climber->counters->groupBy('title') as $counter)
                   <a href="{{route('counters.show', $counter->first()->slug)}}" class="btn btn-primary m-1">
