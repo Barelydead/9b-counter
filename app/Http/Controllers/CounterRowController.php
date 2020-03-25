@@ -86,7 +86,7 @@ class CounterRowController extends Controller
         $counterRow->update($request->all());
 
         $request->session()->flash('success', 'Counter updated');
-        return redirect(route('counterRows.edit', $counterRow->id));
+        return redirect(route('counterrows.edit', $counterRow->id));
     }
 
     /**
@@ -100,7 +100,7 @@ class CounterRowController extends Controller
       $counterRow->delete();
 
       $request->session()->flash('success', 'Row has been deleted');
-      return redirect(route('counterRows.admin-index'));
+      return redirect(route('counterrows.admin-index'));
     }
 
     /**
@@ -108,11 +108,11 @@ class CounterRowController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function adminIndex(Request $request)
+    public function adminIndex()
     {
       $counterRows = CounterRow::all();
 
-      return view('counterRows.admin-index', [
+      return view('counterrows.admin-index', [
         'counterRows' => $counterRows,
       ]);
     }
