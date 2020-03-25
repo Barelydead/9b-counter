@@ -21,10 +21,6 @@
     background-color: $palette-4;
   }
 
-  & + & {
-    margin-left: 1rem;
-  }
-
   &:hover {
     transform: scale(1.01);
   }
@@ -41,7 +37,6 @@
   }
 
   &__link {
-    width: 100%;
-    padding: 0;
+    margin-bottom: 2rem;
   }
 }

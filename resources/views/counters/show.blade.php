@@ -35,18 +35,16 @@
           <h2>Other Counters from {{ $counter->year }}</h2>
         </div>
       </div>
-      <div class="row">
-        @foreach ($relatedCounters as $key => $counter)
-          <a class="blurb__link btn col-sm-12 col-md-6 col-lg-3" href="{{ route('counters.show', $counter->slug) }}">
-            <article class="blurb blurb--palette{{ $key % 4 + 1 }}">
-              <div class="blurb__inner">
-              <small class="blurb__category text-uppercase">{{ $counter->counter_type }}</small>
-                <h2 class="blurb__header">{{ $counter->minimum_grade }}</h2>
-              </div>
-            </article>
-          </a>
-        @endforeach
-      </div>
+      @foreach ($relatedCounters as $key => $counter)
+        <a class="blurb__link col-sm-12 col-md-6 col-lg-3" href="{{ route('counters.show', $counter->slug) }}">
+          <article class="blurb blurb--palette{{ $key % 4 + 1 }}">
+            <div class="blurb__inner">
+            <small class="blurb__category text-uppercase">{{ $counter->counter_type }}</small>
+              <h2 class="blurb__header">{{ $counter->minimum_grade }}</h2>
+            </div>
+          </article>
+        </a>
+      @endforeach
     </div>
   </div>
 @endsection

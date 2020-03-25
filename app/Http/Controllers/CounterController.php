@@ -63,7 +63,7 @@ class CounterController extends Controller
     public function show(Counter $counter)
     {
       $rows = $counter->rows->groupBy('climber_id');
-      $relatedCounters = Counter::where('year', $counter->year)->get();
+      $relatedCounters = Counter::where('year', $counter->year)->where('id', '!=', $counter->id)->get();
 
       return view('counters.show', compact(['rows', 'counter', 'relatedCounters']));
     }
