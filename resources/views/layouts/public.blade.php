@@ -7,6 +7,7 @@
 
   <title>9B Counter | @yield('title')</title>
   <link rel="shortcut icon" href="/favicon.ico">
+  <script src="{{asset('js/ga.js')}}"></script>
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
