@@ -38,5 +38,9 @@
 
   &__link {
     margin-bottom: 2rem;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
