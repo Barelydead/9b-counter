@@ -32,17 +32,17 @@
       <div class="form-group">
         <label for="counter_type">Type of counter</label>
         <select name="counter_type" class="form-control" id="counter_type">
-            <option class="form__option">Trad</option>
-            <option class="form__option">Sport</option>
-            <option class="form__option">Boulder</option>
+            <option class="form__option" {{ 'trad' == $counter->counter_type ? 'selected' : ''}}>Trad</option>
+            <option class="form__option" {{ 'sport' == $counter->counter_type ? 'selected' : ''}}>Sport</option>
+            <option class="form__option" {{ 'boulder' == $counter->counter_type ? 'selected' : ''}}>Boulder</option>
         </select>
       </div>
       <div class="form-group">
         <label for="gender">Gender</label>
         <select name="gender" class="form-control" id="gender">
-            <option class="form__option">male</option>
-            <option class="form__option">female</option>
-            <option class="form__option">mixed</option>
+            <option class="form__option" {{ 'male' == $counter->gender ? 'selected' : ''}}>male</option>
+            <option class="form__option" {{ 'female' == $counter->gender ? 'selected' : ''}}>female</option>
+            <option class="form__option" {{ 'mixed' == $counter->gender ? 'selected' : ''}}>mixed</option>
         </select>
       </div>
 
