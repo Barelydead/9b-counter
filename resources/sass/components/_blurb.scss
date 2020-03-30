@@ -5,6 +5,10 @@
   position: relative;
   cursor: pointer;
 
+  &--primary {
+    background-color: $black;
+  }
+
   &--palette1 {
     background-color: $palette-1;
   }
