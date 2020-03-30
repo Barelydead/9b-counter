@@ -18,8 +18,8 @@
       <tbody>
         @foreach ($rows as $group)
           <tr>
-            <td>{{ $group->first()->climber->name }}</td>
-            <td>
+            <td><img src="{{$group->first()->climber->flag() }}" class="mr-2" style="width:46px">{{ $group->first()->climber->name }}</td>
+            <td class="align-middle">
               @foreach ($group as $row)
                 {{ $row->route->name }} ({{ $row->points }}) <br>
               @endforeach

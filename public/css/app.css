@@ -10652,6 +10652,10 @@ a.text-dark:focus {
   cursor: pointer;
 }
 
+.blurb--primary {
+  background-color: #000;
+}
+
 .blurb--palette1 {
   background-color: #571845;
 }
@@ -10666,10 +10670,6 @@ a.text-dark:focus {
 
 .blurb--palette4 {
   background-color: #FF5733;
-}
-
-.blurb + .blurb {
-  margin-left: 1rem;
 }
 
 .blurb:hover {
@@ -10688,9 +10688,11 @@ a.text-dark:focus {
 }
 
 .blurb__link {
-  margin: 0 1rem;
-  width: 100%;
-  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.blurb__link:hover {
+  text-decoration: none;
 }
 
 .header {

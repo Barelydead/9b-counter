@@ -19,8 +19,8 @@
         @foreach ($climbers as $climber)
           @if ($climber->hasCounters())
             <tr>
-              <td>{{ $climber->name }}</td>
-              <td class="text-capitalize">{{ $climber->country }}</td>
+              <td><img src="{{ $climber->flag() }}" class="mr-2" style="width:46px"> {{ $climber->name }}</td>
+              <td class="text-capitalize align-middle">{{ $climber->country }}</td>
               <td>
                 @foreach ($climber->counters->groupBy('title') as $counter)
                   <a href="{{route('counters.show', $counter->first()->slug)}}" class="btn btn-primary m-1">
