@@ -1,6 +1,6 @@
 @extends('layouts.public')
 
-@section('title', 'Climbers')
+@section('title', $counter->title)
 
 @section('main')
   @include('components/intro', ['title' => $counter->title, 'preamble' => $counter->description])
