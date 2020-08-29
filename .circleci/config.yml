@@ -61,10 +61,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "7e:be:48:d3:67:a2:04:77:17:69:9e:b9:b3:86:66:cb"
-      - run:
-          name: Deploy Over SSH
-          command: |
-            ssh $SSH_USER@$SSH_HOST 'echo "hello";'
+      - run: ssh -oStrictHostKeyChecking=no -v $SSH_USER@$SSH_HOST
 
 workflows:
   version: 2
