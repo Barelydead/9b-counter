@@ -46,7 +46,7 @@ jobs:
 
       # prepare the database
       - run: cp .env.testing .env
-      - run: touch storage/database.sqlite
+      - run: touch database/database.sqlite
       - run: php artisan migrate --env=testing --database=database --force
       - run: php artisan key:generate
 
