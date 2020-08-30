@@ -25,17 +25,19 @@
   @include('partials.header')
 
   <body>
-    <main class="container main">
-      @if (Session::has('success'))
-      <div class="alert alert--success">{{ Session::get('success') }}</div>
-      @endif
-      @if (Session::has('error'))
-      <div class="alert alert--error">{{ Session::get('error') }}</div>
-      @endif
-    </main>
-    <main class="main-content">
-      @yield('main')
-    </main>
+    <div id="app">
+      <main class="container main">
+        @if (Session::has('success'))
+        <div class="alert alert--success">{{ Session::get('success') }}</div>
+        @endif
+        @if (Session::has('error'))
+        <div class="alert alert--error">{{ Session::get('error') }}</div>
+        @endif
+      </main>
+      <main class="main-content">
+        @yield('main')
+      </main>
+    </div>
   </body>
 
   @include('partials.footer')

@@ -1,13 +1,20 @@
-// /**
-//  * First we will load all of this project's JavaScript dependencies which
-//  * includes Vue and other libraries. It is a great starting point when
-//  * building robust, powerful web applications using Vue and Laravel.
-//  */
 
-require('./bootstrap');
+/**
+ * Create a vue instance and attach the components
+ */
+import Vue from 'vue';
+import jQuery from 'jquery';
+import bootstrap from 'bootstrap';
 
-$(document).ready(function() {
-  $('.js-routes-toggle').click(function() {
-    $(this).toggleClass('climber-card--expanded');
-  })
+window.$ = jQuery
+
+
+
+import climbingCard from './components/ClimbingCard.vue';
+
+const app = new Vue({
+   el: '#app',
+   components: {
+    climbingCard
+   }
 });
