@@ -24,6 +24,6 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
-        "ajv": "^6.8.1"
+        "ajv": "^6.12.3"
     }
 }
